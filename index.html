@@ -5,533 +5,349 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LRS Social Studies Pacing Guide</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Roboto', sans-serif; }
-        /* DESE Standard Code Style */
-        .std-code { 
-            font-size: 0.70rem; 
-            color: #b91c1c; 
-            font-weight: 800; 
-            display: block; 
-            margin-top: 6px; 
-            letter-spacing: 0.02em;
-            background-color: #fef2f2;
-            padding: 2px 4px;
-            border-radius: 4px;
-            width: fit-content;
+        /* Google Sheets / PDF Print Style */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #202124;
+            margin: 0;
+            padding: 20px;
         }
-        .std-desc { font-size: 0.70rem; color: #4b5563; font-style: italic; display: block; line-height: 1.2; margin-top: 1px; }
-        /* Topic Link Style */
-        .topic-link { color: #2563eb; font-weight: 700; text-decoration: none; border-bottom: 2px solid #93c5fd; transition: all 0.2s; }
-        .topic-link:hover { color: #1e40af; border-bottom-color: #1e40af; background-color: #eff6ff; }
-        th { position: sticky; top: 0; background-color: #f3f4f6; z-index: 10; border-bottom: 2px solid #d1d5db; }
+        .sheet-container {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+            max-width: 100%;
+            overflow-x: auto;
+            margin-bottom: 40px;
+            border: 1px solid #e0e0e0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            min-width: 1200px; /* Force scrolling on small screens */
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid #b7b7b7; /* Darker border for spreadsheet feel */
+            padding: 8px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+        /* Headers */
+        th {
+            background-color: #e8eaed; /* Sheets Header Grey */
+            color: #202124;
+            font-weight: bold;
+            text-align: center;
+        }
+        /* Subject Column */
+        .subject-col {
+            background-color: #f1f3f4;
+            font-weight: bold;
+            width: 120px;
+            text-align: left;
+            position: sticky;
+            left: 0;
+            border-right: 2px solid #b7b7b7;
+        }
+        /* Content Styling */
+        .cell-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .topic-text {
+            font-weight: 600;
+            color: #000;
+        }
+        /* Links */
+        .video-link {
+            color: #1a73e8; /* Google Blue */
+            text-decoration: none;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .video-link:hover { text-decoration: underline; }
+        
+        .worksheet-link {
+            color: #188038; /* Google Green */
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 2px;
+        }
+        .worksheet-link:hover { text-decoration: underline; }
+
+        /* MLS Codes */
+        .mls-tag {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 10px;
+            color: #d93025; /* Red for emphasis */
+            background: #fce8e6;
+            padding: 1px 4px;
+            border-radius: 2px;
+            width: fit-content;
+            margin-top: 4px;
+        }
+        /* Month Header Colors */
+        .month-header {
+            font-size: 16px;
+            padding: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-    <!-- Header -->
-    <header class="bg-slate-900 text-white p-6 shadow-md border-b-4 border-red-700">
-        <div class="max-w-[98%] mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div class="mb-4 md:mb-0">
-                <h1 class="text-2xl font-bold uppercase tracking-wide">Social Studies Curriculum Map (6-12)</h1>
-                <p class="text-gray-400 text-sm mt-1">Aligned to Missouri Learning Standards (2016 SBOE Approved)</p>
-            </div>
-        </div>
-    </header>
+    <h1 class="text-2xl font-bold mb-6 text-center uppercase tracking-wide text-gray-800">Social Studies Curriculum Map (6-12)</h1>
 
-    <main class="max-w-[98%] mx-auto py-8">
-        
-        <div class="bg-white border border-gray-300 shadow-sm overflow-x-auto rounded-lg">
-            <table class="min-w-full divide-y divide-gray-300 text-sm border-collapse">
-                
-                <!-- ================= AUGUST / SEPTEMBER ================= -->
-                <thead>
-                    <tr class="bg-slate-200 text-slate-800">
-                        <th class="p-3 text-left w-36 font-bold text-base border-r border-slate-300">Subject</th>
-                        <th colspan="4" class="p-3 text-center border-r border-slate-300 bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">August</th>
-                        <th colspan="4" class="p-3 text-center bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">September</th>
-                    </tr>
-                    <tr class="bg-white text-xs uppercase text-slate-500 font-bold tracking-wide">
-                        <th class="p-2 border-r border-slate-200 bg-slate-50">Standard Band</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 1</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 2</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 3</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 4</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 1</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 2</th>
-                        <th class="p-2 border-r border-slate-200 w-[11%] text-center">Week 3</th>
-                        <th class="p-2 w-[11%] text-center">Week 4</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <!-- World History (Ancient: 6-8.WH) -->
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">World History</td>
-                        <td class="p-3 border-r border-gray-200">Early Humans<span class="std-code">6-8.WH.1.CC.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Stone Age<span class="std-code">6-8.WH.2.GS.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Features of Civ<span class="std-code">6-8.WH.2.PC.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Mesopotamia<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200">9/11 Context<span class="std-code">6-8.AH.5.CC.D</span></td>
-                        <td class="p-3 border-r border-gray-200">Timelines<span class="std-code">6-8.WH.1.CC.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Sumer & Akkad<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3">Babylon & Hittites<span class="std-code">6-8.WH.2.EC.A</span></td>
-                    </tr>
-                    <!-- US History (Beginnings: 6-8.AH) -->
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">US History</td>
-                        <td class="p-3 border-r border-gray-200">
-                            <a href="ccush_01_black_legend.pdf" target="_blank" class="topic-link">CC US E1</a>
-                            <div class="text-xs mt-1 text-slate-600">Black Legend</div>
-                            <span class="std-code">6-8.AH.1.CC.C</span>
-                            <span class="std-desc">Exploration impact</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                            <a href="ccush_02_colonizing_america.pdf" target="_blank" class="topic-link">CC US E2</a>
-                            <div class="text-xs mt-1 text-slate-600">Colonization</div>
-                            <span class="std-code">6-8.AH.3.GS.C</span>
-                            <span class="std-desc">Colonial regions</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                            <a href="ccush_03_natives_and_english.pdf" target="_blank" class="topic-link">CC US E3</a>
-                            <div class="text-xs mt-1 text-slate-600">Natives & English</div>
-                            <span class="std-code">6-8.AH.1.GS.B</span>
-                            <span class="std-desc">Interactions</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                            <a href="ccush_04_quakers_dutch_ladies.pdf" target="_blank" class="topic-link">CC US E4</a>
-                            <div class="text-xs mt-1 text-slate-600">Quakers/Dutch</div>
-                            <span class="std-code">6-8.AH.3.PC.E</span>
-                            <span class="std-desc">Cultural groups</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                            <a href="ush_911_background.pdf" target="_blank" class="topic-link">9/11 Context</a>
-                            <span class="std-code">9-12.AH.6.PC.D</span>
-                            <span class="std-desc">Modern terrorism</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                            Maps/Timelines
-                            <span class="std-code">6-8.AH.1.G.A</span>
-                            <span class="std-desc">Geographic tools</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                            <a href="ccush_05_seven_years_war.pdf" target="_blank" class="topic-link">CC US E5</a>
-                            <div class="text-xs mt-1 text-slate-600">7 Years War</div>
-                            <span class="std-code">6-8.AH.2.CC.A</span>
-                            <span class="std-desc">Causes of Rev</span>
-                        </td>
-                        <td class="p-3">
-                            <a href="ccush_06_taxes_and_smuggling.pdf" target="_blank" class="topic-link">CC US E6</a>
-                            <div class="text-xs mt-1 text-slate-600">Taxes</div>
-                            <span class="std-code">6-8.AH.2.CC.B</span>
-                            <span class="std-desc">Colonial resistance</span>
-                        </td>
-                    </tr>
-                    <!-- Government (Foundations: 9-12.GV) -->
-                    <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
-                        <td class="p-3 font-bold bg-blue-100 border-r border-blue-200 text-blue-900 align-top">Government</td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_01_why_study_gov.pdf" target="_blank" class="topic-link">CC Gov E1</a>
-                            <div class="text-xs mt-1 text-slate-600">Why Study Gov?</div>
-                            <span class="std-code">9-12.GV.1.GS.A</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_02_bicameral_congress.pdf" target="_blank" class="topic-link">CC Gov E2</a>
-                            <div class="text-xs mt-1 text-slate-600">Bicameral</div>
-                            <span class="std-code">9-12.GV.3.GS.A</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_03_checks_balances.pdf" target="_blank" class="topic-link">CC Gov E3</a>
-                            <div class="text-xs mt-1 text-slate-600">Checks/Balances</div>
-                            <span class="std-code">9-12.GV.1.PC.B</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_04_federalism.pdf" target="_blank" class="topic-link">CC Gov E4</a>
-                            <div class="text-xs mt-1 text-slate-600">Federalism</div>
-                            <span class="std-code">9-12.GV.1.GS.B</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            9/11 Context
-                            <span class="std-code">9-12.GV.4.PC.D</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            Timeline
-                            <span class="std-code">SS.9-12.G.1</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_05_con_compromise.pdf" target="_blank" class="topic-link">CC Gov E5</a>
-                            <div class="text-xs mt-1 text-slate-600">Compromises</div>
-                            <span class="std-code">9-12.GV.1.CC.C</span>
-                        </td>
-                        <td class="p-3">
-                            <a href="ccgov_06_congress_elections.pdf" target="_blank" class="topic-link">CC Gov E6</a>
-                            <div class="text-xs mt-1 text-slate-600">Elections</div>
-                            <span class="std-code">9-12.GV.2.PC.A</span>
-                        </td>
-                    </tr>
-                </tbody>
+    <!-- AUGUST / SEPTEMBER TABLE -->
+    <div class="sheet-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="subject-col" rowspan="2">Subject</th>
+                    <th colspan="4" class="month-header">August</th>
+                    <th colspan="4" class="month-header">September</th>
+                </tr>
+                <tr>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- World History -->
+                <tr>
+                    <td class="subject-col">World History</td>
+                    <td><div class="cell-content"><span class="topic-text">Telling Time / Early Humans</span><div class="mls-tag">6-8.WH.1.CC.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Early Humans / Stone Age</span><div class="mls-tag">6-8.WH.2.GS.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Features of Civilization</span><div class="mls-tag">6-8.WH.2.PC.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Mesopotamia: Fertile Crescent</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">9/11 Background</span><div class="mls-tag">6-8.AH.5.CC.D</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Interactive Timelines</span><div class="mls-tag">6-8.WH.1.CC.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Sumer & Akkad</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Babylon & Hittites</span><div class="mls-tag">6-8.WH.2.EC.A</div></div></td>
+                </tr>
+                <!-- US History -->
+                <tr>
+                    <td class="subject-col">US History</td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Black Legend / Natives</span>
+                            <a href="ccush_01_black_legend.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC US E1)</a>
+                            <div class="mls-tag">6-8.AH.1.CC.C</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Colonizing America</span>
+                            <a href="ccush_02_colonizing_america.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC US E2)</a>
+                            <div class="mls-tag">6-8.AH.3.GS.C</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Natives & English</span>
+                            <a href="ccush_03_natives_and_english.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC US E3)</a>
+                            <div class="mls-tag">6-8.AH.1.GS.B</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Quakers / Dutch</span>
+                            <a href="ccush_04_quakers_dutch_ladies.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC US E4)</a>
+                            <div class="mls-tag">6-8.AH.3.PC.E</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">9/11 Context</span>
+                            <a href="ush_911_background.pdf" target="_blank" class="worksheet-link">📄 Worksheet (9/11)</a>
+                            <div class="mls-tag">9-12.AH.6.PC.D</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Timelines</span>
+                            <div class="mls-tag">6-8.AH.1.G.A</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Seven Years War</span>
+                            <a href="ccush_05_seven_years_war.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC US E5)</a>
+                            <div class="mls-tag">6-8.AH.2.CC.A</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Taxes & Smuggling</span>
+                            <a href="ccush_06_taxes_and_smuggling.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC US E6)</a>
+                            <div class="mls-tag">6-8.AH.2.CC.B</div>
+                        </div>
+                    </td>
+                </tr>
+                <!-- Government -->
+                <tr>
+                    <td class="subject-col">Government</td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Why Study Gov?</span>
+                            <a href="ccgov_01_why_study_gov.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC Gov E1)</a>
+                            <div class="mls-tag">9-12.GV.1.GS.A</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Bicameral Congress</span>
+                            <a href="ccgov_02_bicameral_congress.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC Gov E2)</a>
+                            <div class="mls-tag">9-12.GV.3.GS.A</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Checks & Balances</span>
+                            <a href="ccgov_03_checks_balances.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC Gov E3)</a>
+                            <div class="mls-tag">9-12.GV.1.PC.B</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Federalism</span>
+                            <a href="ccgov_04_federalism.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC Gov E4)</a>
+                            <div class="mls-tag">9-12.GV.1.GS.B</div>
+                        </div>
+                    </td>
+                    <td><div class="cell-content"><span class="topic-text">9/11 Context</span><div class="mls-tag">9-12.GV.4.PC.D</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Timeline</span><div class="mls-tag">SS.9-12.G.1</div></div></td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Compromises</span>
+                            <a href="ccgov_05_con_compromise.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC Gov E5)</a>
+                            <div class="mls-tag">9-12.GV.1.CC.C</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="cell-content">
+                            <span class="topic-text">Elections</span>
+                            <a href="ccgov_06_congress_elections.pdf" target="_blank" class="worksheet-link">📄 Worksheet (CC Gov E6)</a>
+                            <div class="mls-tag">9-12.GV.2.PC.A</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-                <!-- ================= OCTOBER / NOVEMBER ================= -->
-                <thead>
-                    <tr class="bg-slate-200 text-slate-800">
-                        <th class="p-3 text-left border-r border-slate-300 font-bold text-base">Subject</th>
-                        <th colspan="4" class="p-3 text-center border-r border-slate-300 bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">October</th>
-                        <th colspan="4" class="p-3 text-center bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">November</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                     <!-- World History (Ancient: 6-8.WH) -->
-                     <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">World History</td>
-                        <td class="p-3 border-r border-gray-200">Egypt Old Kingdom<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200">Egypt New Kingdom<span class="std-code">6-8.WH.2.PC.B</span></td>
-                        <td class="p-3 border-r border-gray-200">Egypt Culture<span class="std-code">6-8.WH.2.PC.C</span></td>
-                        <td class="p-3 border-r border-gray-200">India Harappa<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200">India Caste System<span class="std-code">6-8.WH.2.PC.D</span></td>
-                        <td class="p-3 border-r border-gray-200">China Shang<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200">China Zhou<span class="std-code">6-8.WH.2.CC.C</span></td>
-                        <td class="p-3 bg-gray-100 text-slate-400 italic font-medium text-center">Thanksgiving Break</td>
-                    </tr>
-                    <!-- US History (Early Republic: 6-8.AH) -->
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">US History</td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_07_revolution.pdf" target="_blank" class="topic-link">CC US E7</a>
-                             <div class="text-xs mt-1 text-slate-600">Revolution</div>
-                             <span class="std-code">6-8.AH.2.CC.C</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_08_constitution.pdf" target="_blank" class="topic-link">CC US E8</a>
-                             <div class="text-xs mt-1 text-slate-600">Constitution</div>
-                             <span class="std-code">6-8.AH.2.GS.D</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_09_political_parties.pdf" target="_blank" class="topic-link">CC US E9</a>
-                             <div class="text-xs mt-1 text-slate-600">Parties</div>
-                             <span class="std-code">6-8.AH.3.CC.A</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_10_jefferson.pdf" target="_blank" class="topic-link">CC US E10</a>
-                             <div class="text-xs mt-1 text-slate-600">Jefferson</div>
-                             <span class="std-code">6-8.AH.3.GS.A</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_11_war_of_1812.pdf" target="_blank" class="topic-link">CC US E11</a>
-                             <div class="text-xs mt-1 text-slate-600">War of 1812</div>
-                             <span class="std-code">6-8.AH.3.CC.C</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_12_market_revolution.pdf" target="_blank" class="topic-link">CC US E12</a>
-                             <div class="text-xs mt-1 text-slate-600">Market Rev</div>
-                             <span class="std-code">6-8.AH.3.EC.A</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_13_slavery.pdf" target="_blank" class="topic-link">CC US E13</a>
-                             <div class="text-xs mt-1 text-slate-600">Slavery</div>
-                             <span class="std-code">6-8.AH.3.PC.B</span>
-                        </td>
-                        <td class="p-3 bg-gray-100 text-slate-400 italic font-medium text-center">Thanksgiving Break</td>
-                    </tr>
-                    <!-- Gov (Congress: 9-12.GV) -->
-                    <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
-                        <td class="p-3 font-bold bg-blue-100 border-r border-blue-200 text-blue-900 align-top">Government</td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_07_congress_committees.pdf" target="_blank" class="topic-link">CC Gov E7</a>
-                            <div class="text-xs text-slate-600">Committees</div>
-                            <span class="std-code">9-12.GV.3.GS.B</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_08_congress_leadership.pdf" target="_blank" class="topic-link">CC Gov E8</a>
-                            <div class="text-xs text-slate-600">Leadership</div>
-                            <span class="std-code">9-12.GV.3.GS.B</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_09_bill_becomes_law.pdf" target="_blank" class="topic-link">CC Gov E9</a>
-                            <div class="text-xs text-slate-600">Making Laws</div>
-                            <span class="std-code">9-12.GV.3.PC.A</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_10_congress_decisions.pdf" target="_blank" class="topic-link">CC Gov E10</a>
-                            <div class="text-xs text-slate-600">Decisions</div>
-                            <span class="std-code">9-12.GV.2.GS.B</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_11_presidential_power.pdf" target="_blank" class="topic-link">CC Gov E11</a>
-                            <div class="text-xs text-slate-600">Pres. Power</div>
-                            <span class="std-code">9-12.GV.3.GS.C</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_12_pres_power_two.pdf" target="_blank" class="topic-link">CC Gov E12</a>
-                            <div class="text-xs text-slate-600">Powers II</div>
-                            <span class="std-code">9-12.GV.3.GS.C</span>
-                        </td>
-                        <td class="p-3 border-r border-blue-100">
-                            <a href="ccgov_13_congress_delegation.pdf" target="_blank" class="topic-link">CC Gov E13</a>
-                            <div class="text-xs text-slate-600">Delegation</div>
-                            <span class="std-code">9-12.GV.3.PC.B</span>
-                        </td>
-                        <td class="p-3 bg-gray-100 text-slate-400 italic font-medium text-center">Thanksgiving Break</td>
-                    </tr>
-                </tbody>
+    <!-- OCTOBER / NOVEMBER TABLE -->
+    <div class="sheet-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="subject-col" rowspan="2">Subject</th>
+                    <th colspan="4" class="month-header">October</th>
+                    <th colspan="4" class="month-header">November</th>
+                </tr>
+                <tr>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- World History -->
+                <tr>
+                    <td class="subject-col">World History</td>
+                    <td><div class="cell-content"><span class="topic-text">Egypt: Old Kingdom</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Egypt: New Kingdom</span><div class="mls-tag">6-8.WH.2.PC.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Egypt Culture</span><div class="mls-tag">6-8.WH.2.PC.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">India: Harappa</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">India: Caste System</span><div class="mls-tag">6-8.WH.2.PC.D</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">China: Shang</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">China: Zhou</span><div class="mls-tag">6-8.WH.2.CC.C</div></div></td>
+                    <td style="background-color: #fce8e6; text-align: center; color: #5f6368; font-style: italic;">Thanksgiving Break</td>
+                </tr>
+                <!-- US History -->
+                <tr>
+                    <td class="subject-col">US History</td>
+                    <td><div class="cell-content"><span class="topic-text">Revolution</span><a href="ccush_07_revolution.pdf" class="worksheet-link">📄 Worksheet (CC US E7)</a><div class="mls-tag">6-8.AH.2.CC.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Constitution</span><a href="ccush_08_constitution.pdf" class="worksheet-link">📄 Worksheet (CC US E8)</a><div class="mls-tag">6-8.AH.2.GS.D</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Political Parties</span><a href="ccush_09_political_parties.pdf" class="worksheet-link">📄 Worksheet (CC US E9)</a><div class="mls-tag">6-8.AH.3.CC.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Jefferson</span><a href="ccush_10_jefferson.pdf" class="worksheet-link">📄 Worksheet (CC US E10)</a><div class="mls-tag">6-8.AH.3.GS.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">War of 1812</span><a href="ccush_11_war_of_1812.pdf" class="worksheet-link">📄 Worksheet (CC US E11)</a><div class="mls-tag">6-8.AH.3.CC.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Market Revolution</span><a href="ccush_12_market_revolution.pdf" class="worksheet-link">📄 Worksheet (CC US E12)</a><div class="mls-tag">6-8.AH.3.EC.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Slavery</span><a href="ccush_13_slavery.pdf" class="worksheet-link">📄 Worksheet (CC US E13)</a><div class="mls-tag">6-8.AH.3.PC.B</div></div></td>
+                    <td style="background-color: #fce8e6; text-align: center; color: #5f6368; font-style: italic;">Thanksgiving Break</td>
+                </tr>
+                <!-- Government -->
+                <tr>
+                    <td class="subject-col">Government</td>
+                    <td><div class="cell-content"><span class="topic-text">Committees</span><a href="ccgov_07_congress_committees.pdf" class="worksheet-link">📄 Worksheet (CC Gov E7)</a><div class="mls-tag">9-12.GV.3.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Leadership</span><a href="ccgov_08_congress_leadership.pdf" class="worksheet-link">📄 Worksheet (CC Gov E8)</a><div class="mls-tag">9-12.GV.3.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Making Laws</span><a href="ccgov_09_bill_becomes_law.pdf" class="worksheet-link">📄 Worksheet (CC Gov E9)</a><div class="mls-tag">9-12.GV.3.PC.A</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Decisions</span><a href="ccgov_10_congress_decisions.pdf" class="worksheet-link">📄 Worksheet (CC Gov E10)</a><div class="mls-tag">9-12.GV.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Pres. Power</span><a href="ccgov_11_presidential_power.pdf" class="worksheet-link">📄 Worksheet (CC Gov E11)</a><div class="mls-tag">9-12.GV.3.GS.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Powers II</span><a href="ccgov_12_pres_power_two.pdf" class="worksheet-link">📄 Worksheet (CC Gov E12)</a><div class="mls-tag">9-12.GV.3.GS.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Delegation</span><a href="ccgov_13_congress_delegation.pdf" class="worksheet-link">📄 Worksheet (CC Gov E13)</a><div class="mls-tag">9-12.GV.3.PC.B</div></div></td>
+                    <td style="background-color: #fce8e6; text-align: center; color: #5f6368; font-style: italic;">Thanksgiving Break</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-                <!-- ================= DECEMBER / JANUARY ================= -->
-                <thead>
-                    <tr class="bg-slate-200 text-slate-800">
-                        <th class="p-3 text-left border-r border-slate-300 font-bold text-base">Subject</th>
-                        <th colspan="4" class="p-3 text-center border-r border-slate-300 bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">December</th>
-                        <th colspan="4" class="p-3 text-center bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">January</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    <!-- World History (Greece: 6-8.WH) -->
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">World History</td>
-                        <td class="p-3 border-r border-gray-200">Minoans<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200">Mycenaeans<span class="std-code">6-8.WH.2.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200 bg-gray-100 text-slate-400 text-center">Exams</td>
-                        <td class="p-3 border-r border-gray-200 bg-gray-100 text-slate-400 text-center">Break</td>
-                        <td class="p-3 border-r border-gray-200 bg-gray-100 text-slate-400 text-center">Break</td>
-                        <td class="p-3 border-r border-gray-200">Greek Polis<span class="std-code">6-8.WH.2.GS.C</span></td>
-                        <td class="p-3 border-r border-gray-200">Sparta/Athens<span class="std-code">6-8.WH.2.CC.C</span></td>
-                        <td class="p-3">Greek Wars<span class="std-code">6-8.WH.2.CC.D</span></td>
-                    </tr>
-                    <!-- US History (Antebellum: 6-8.AH) -->
-                    <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">US History</td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_14_age_of_jackson.pdf" target="_blank" class="topic-link">CC US E14</a>
-                             <div class="text-xs mt-1 text-slate-600">Jackson</div>
-                             <span class="std-code">6-8.AH.3.CC.E</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_15_reform_movements.pdf" target="_blank" class="topic-link">CC US E15</a>
-                             <div class="text-xs mt-1 text-slate-600">Reforms</div>
-                             <span class="std-code">6-8.AH.3.PC.E</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200 bg-gray-100 text-slate-400 text-center">Exams</td>
-                        <td class="p-3 border-r border-gray-200 bg-gray-100 text-slate-400 text-center">Break</td>
-                        <td class="p-3 border-r border-gray-200 bg-gray-100 text-slate-400 text-center">Break</td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_16_womens_movements.pdf" target="_blank" class="topic-link">CC US E16</a>
-                             <div class="text-xs mt-1 text-slate-600">Women</div>
-                             <span class="std-code">6-8.AH.3.GS.B</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_17_westward_expansion.pdf" target="_blank" class="topic-link">CC US E17</a>
-                             <div class="text-xs mt-1 text-slate-600">Expansion</div>
-                             <span class="std-code">6-8.AH.3.CC.F</span>
-                        </td>
-                        <td class="p-3">
-                             <a href="ccush_18_election_1860.pdf" target="_blank" class="topic-link">CC US E18</a>
-                             <div class="text-xs mt-1 text-slate-600">Elec. 1860</div>
-                             <span class="std-code">6-8.AH.4.CC.A</span>
-                        </td>
-                    </tr>
-                    <!-- Gov (Exec/Bureau: 9-12.GV) -->
-                    <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
-                        <td class="p-3 font-bold bg-blue-100 border-r border-blue-200 text-blue-900 align-top">Government</td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_14_how_presidents_govern.pdf" target="_blank" class="topic-link">CC Gov E14</a><div class="text-xs mt-1">Presidents</div><span class="std-code">9-12.GV.3.GS.C</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_15_bureaucracy_basics.pdf" target="_blank" class="topic-link">CC Gov E15</a><div class="text-xs mt-1">Bureaucracy</div><span class="std-code">9-12.GV.3.GS.E</span></td>
-                        <td class="p-3 border-r border-blue-100 bg-gray-100 text-slate-400 text-center">Exams</td>
-                        <td class="p-3 border-r border-blue-100 bg-gray-100 text-slate-400 text-center">Break</td>
-                        <td class="p-3 border-r border-blue-100 bg-gray-100 text-slate-400 text-center">Break</td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_16_types_of_bureaucracies.pdf" target="_blank" class="topic-link">CC Gov E16</a><div class="text-xs mt-1">Agencies</div><span class="std-code">9-12.GV.3.PC.E</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_17_controlling_bureaucracies.pdf" target="_blank" class="topic-link">CC Gov E17</a><div class="text-xs mt-1">Oversight</div><span class="std-code">9-12.GV.3.CC.D</span></td>
-                        <td class="p-3"><a href="ccgov_18_legal_system_basics.pdf" target="_blank" class="topic-link">CC Gov E18</a><div class="text-xs mt-1">Legal Sys</div><span class="std-code">9-12.GV.3.GS.D</span></td>
-                    </tr>
-                </tbody>
-
-                 <!-- ================= FEB / MARCH ================= -->
-                 <thead>
-                    <tr class="bg-slate-200 text-slate-800">
-                        <th class="p-3 text-left border-r border-slate-300 font-bold text-base">Subject</th>
-                        <th colspan="4" class="p-3 text-center border-r border-slate-300 bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">February</th>
-                        <th colspan="4" class="p-3 text-center bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">March</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                     <!-- World History (Medieval/Ren: 6-8.WH) -->
-                     <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">World History</td>
-                        <td class="p-3 border-r border-gray-200">Rome Republic<span class="std-code">6-8.WH.2.GS.C</span></td>
-                        <td class="p-3 border-r border-gray-200">Rome Empire<span class="std-code">6-8.WH.2.PC.B</span></td>
-                        <td class="p-3 border-r border-gray-200">Christianity<span class="std-code">6-8.WH.2.PC.C</span></td>
-                        <td class="p-3 border-r border-gray-200">Rome Fall<span class="std-code">6-8.WH.2.CC.D</span></td>
-                        <td class="p-3 border-r border-gray-200">Feudalism<span class="std-code">6-8.WH.3.GS.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Crusades<span class="std-code">6-8.WH.3.CC.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Renaissance<span class="std-code">6-8.WH.3.PC.B</span></td>
-                        <td class="p-3">Reformation<span class="std-code">6-8.WH.3.PC.C</span></td>
-                    </tr>
-                    <!-- US History (Post-1870: SWITCH TO 9-12.AH) -->
-                     <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">US History</td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_26_gilded_age.pdf" target="_blank" class="topic-link">CC US E26</a>
-                             <div class="text-xs mt-1 text-slate-600">Gilded Age</div>
-                             <span class="std-code">9-12.AH.4.EC.C</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_27_progressive_era.pdf" target="_blank" class="topic-link">CC US E27</a>
-                             <div class="text-xs mt-1 text-slate-600">Progressive</div>
-                             <span class="std-code">9-12.AH.4.GS.C</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_28_imperialism.pdf" target="_blank" class="topic-link">CC US E28</a>
-                             <div class="text-xs mt-1 text-slate-600">Empire</div>
-                             <span class="std-code">9-12.AH.4.CC.D</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_30_wwi.pdf" target="_blank" class="topic-link">CC US E30</a>
-                             <div class="text-xs mt-1 text-slate-600">WWI</div>
-                             <span class="std-code">9-12.AH.4.CC.E</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <span class="text-gray-500 text-xs">Homefront (Use E30)</span>
-                             <span class="std-code">9-12.AH.4.GS.D</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_31_womens_suffrage.pdf" target="_blank" class="topic-link">CC US E31</a>
-                             <div class="text-xs mt-1 text-slate-600">Suffrage</div>
-                             <span class="std-code">9-12.AH.4.PC.E</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_32_roaring_20s.pdf" target="_blank" class="topic-link">CC US E32</a>
-                             <div class="text-xs mt-1 text-slate-600">1920s</div>
-                             <span class="std-code">9-12.AH.5.CC.A</span>
-                        </td>
-                        <td class="p-3 bg-gray-100 text-slate-400 italic font-medium text-center">Spring Break</td>
-                    </tr>
-                    <!-- Gov (Judicial/Rights: 9-12.GV) -->
-                    <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
-                        <td class="p-3 font-bold bg-blue-100 border-r border-blue-200 text-blue-900 align-top">Government</td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_19_structure_court_system.pdf" target="_blank" class="topic-link">CC Gov E19</a><div class="text-xs mt-1">Courts</div><span class="std-code">9-12.GV.3.GS.D</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_20_supreme_court_pro.pdf" target="_blank" class="topic-link">CC Gov E20</a><div class="text-xs mt-1">SCOTUS</div><span class="std-code">9-12.GV.3.PC.C</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_21_judicial_review.pdf" target="_blank" class="topic-link">CC Gov E21</a><div class="text-xs mt-1">Review</div><span class="std-code">9-12.GV.3.CC.C</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_22_judicial_decisions.pdf" target="_blank" class="topic-link">CC Gov E22</a><div class="text-xs mt-1">Decisions</div><span class="std-code">9-12.GV.3.CC.D</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_23_civil_rights_liberties.pdf" target="_blank" class="topic-link">CC Gov E23</a><div class="text-xs mt-1">Rights</div><span class="std-code">9-12.GV.5.PC.A</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_24_freedom_of_religion.pdf" target="_blank" class="topic-link">CC Gov E24</a><div class="text-xs mt-1">Religion</div><span class="std-code">9-12.GV.5.GS.B</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_25_freedom_of_speech.pdf" target="_blank" class="topic-link">CC Gov E25</a><div class="text-xs mt-1">Speech</div><span class="std-code">9-12.GV.5.GS.B</span></td>
-                        <td class="p-3 bg-gray-100 text-slate-400 italic font-medium text-center">Spring Break</td>
-                    </tr>
-                </tbody>
-
-                 <!-- ================= APRIL / MAY ================= -->
-                 <thead>
-                    <tr class="bg-slate-200 text-slate-800">
-                        <th class="p-3 text-left border-r border-slate-300 font-bold text-base">Subject</th>
-                        <th colspan="4" class="p-3 text-center border-r border-slate-300 bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">April</th>
-                        <th colspan="4" class="p-3 text-center bg-slate-100 font-bold text-lg uppercase tracking-wider text-slate-700">May</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                     <!-- World History (Modern Conflict: SWITCH TO 9-12.WH) -->
-                     <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">World History</td>
-                        <td class="p-3 border-r border-gray-200">Civil War<span class="std-code">9-12.AH.4.CC.A</span></td>
-                        <td class="p-3 border-r border-gray-200">Maps/Battles<span class="std-code">9-12.AH.4.GS.B</span></td>
-                        <td class="p-3 border-r border-gray-200">WWI Leadup<span class="std-code">9-12.WH.4.CC.C</span></td>
-                        <td class="p-3 border-r border-gray-200">WWI Trench<span class="std-code">9-12.WH.4.GS.C</span></td>
-                        <td class="p-3 border-r border-gray-200">Versailles<span class="std-code">9-12.WH.4.PC.D</span></td>
-                        <td class="p-3 border-r border-gray-200">WWII Leadup<span class="std-code">9-12.WH.5.CC.A</span></td>
-                        <td class="p-3 border-r border-gray-200">D-Day/Holocaust<span class="std-code">9-12.WH.5.GS.B</span></td>
-                        <td class="p-3">Pearl Harbor<span class="std-code">9-12.WH.5.PC.C</span></td>
-                    </tr>
-                     <!-- US History (Modern: 9-12.AH) -->
-                     <tr class="hover:bg-gray-50 transition-colors">
-                        <td class="p-3 font-bold bg-slate-50 border-r border-slate-200 align-top">US History</td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_33_great_depression.pdf" target="_blank" class="topic-link">CC US E33</a>
-                             <div class="text-xs mt-1 text-slate-600">Depression</div>
-                             <span class="std-code">9-12.AH.5.EC.B</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_34_the_new_deal.pdf" target="_blank" class="topic-link">CC US E34</a>
-                             <div class="text-xs mt-1 text-slate-600">New Deal</div>
-                             <span class="std-code">9-12.AH.5.GS.B</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_35_wwii_part1.pdf" target="_blank" class="topic-link">CC US E35</a>
-                             <div class="text-xs mt-1 text-slate-600">WWII 1</div>
-                             <span class="std-code">9-12.AH.5.CC.C</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_36_wwii_part2.pdf" target="_blank" class="topic-link">CC US E36</a>
-                             <div class="text-xs mt-1 text-slate-600">WWII 2</div>
-                             <span class="std-code">9-12.AH.5.GS.C</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_37_the_cold_war.pdf" target="_blank" class="topic-link">CC US E37</a>
-                             <div class="text-xs mt-1 text-slate-600">Cold War</div>
-                             <span class="std-code">9-12.AH.5.CC.D</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_38_the_cold_war_in_asia.pdf" target="_blank" class="topic-link">CC US E38</a>
-                             <div class="text-xs mt-1 text-slate-600">Asia</div>
-                             <span class="std-code">9-12.AH.6.PC.A</span>
-                        </td>
-                        <td class="p-3 border-r border-gray-200">
-                             <a href="ccush_39_civil_rights_and_the__1950s.pdf" target="_blank" class="topic-link">CC US E39</a>
-                             <div class="text-xs mt-1 text-slate-600">Civil Rights</div>
-                             <span class="std-code">9-12.AH.6.PC.C</span>
-                        </td>
-                        <td class="p-3">
-                             <a href="ccush_40_the_1960s_in_america.pdf" target="_blank" class="topic-link">CC US E40</a>
-                             <div class="text-xs mt-1 text-slate-600">1960s</div>
-                             <span class="std-code">9-12.AH.6.CC.D</span>
-                        </td>
-                    </tr>
-                    <!-- Gov (Rights/Public Opinion: 9-12.GV) -->
-                    <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
-                        <td class="p-3 font-bold bg-blue-100 border-r border-blue-200 text-blue-900 align-top">Government</td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_26_freedom_press.pdf" target="_blank" class="topic-link">CC Gov E26</a><div class="text-xs mt-1">Press</div><span class="std-code">9-12.GV.5.PC.B</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_27_search_seizure.pdf" target="_blank" class="topic-link">CC Gov E27</a><div class="text-xs mt-1">Search</div><span class="std-code">9-12.GV.5.GS.C</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_28_due_process.pdf" target="_blank" class="topic-link">CC Gov E28</a><div class="text-xs mt-1">Due Process</div><span class="std-code">9-12.GV.5.GS.C</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_29_equal_protection.pdf" target="_blank" class="topic-link">CC Gov E29</a><div class="text-xs mt-1">Equal Prot</div><span class="std-code">9-12.GV.5.CC.D</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_30_sex_discrimination.pdf" target="_blank" class="topic-link">CC Gov E30</a><div class="text-xs mt-1">Sex Discrim</div><span class="std-code">9-12.GV.5.PC.E</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_31_discrimination.pdf" target="_blank" class="topic-link">CC Gov E31</a><div class="text-xs mt-1">Discrimination</div><span class="std-code">9-12.GV.5.PC.E</span></td>
-                        <td class="p-3 border-r border-blue-100"><a href="ccgov_32_affirm_action.pdf" target="_blank" class="topic-link">CC Gov E32</a><div class="text-xs mt-1">Affirm Action</div><span class="std-code">9-12.GV.5.CC.E</span></td>
-                        <td class="p-3"><a href="ccgov_33_public_opinion.pdf" target="_blank" class="topic-link">CC Gov E33</a><div class="text-xs mt-1">Pub Opinion</div><span class="std-code">9-12.GV.2.PC.B</span></td>
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
-
-        <!-- Extras Section -->
-        <div id="extras" class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- US History Card -->
-            <div class="bg-white border border-slate-200 p-8 flex flex-col justify-between rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div class="flex items-center mb-4">
-                    <div class="text-5xl mr-4">🇺🇸</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-800">US History Course Materials</h3>
-                        <p class="text-slate-600 mt-2">Crash Course US History Worksheets (1-47)</p>
-                    </div>
-                </div>
-                <!-- Removed broken "Open Folder" button -->
-                <p class="text-sm text-slate-500 italic mt-4">Note: Individual files are linked in the pacing guide above.</p>
-            </div>
-
-            <!-- Gov Card -->
-            <div class="bg-white border border-slate-200 p-8 flex flex-col justify-between rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <div class="flex items-center mb-4">
-                    <div class="text-5xl mr-4">🏛️</div>
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-800">Government Course Materials</h3>
-                        <p class="text-slate-600 mt-2">Crash Course Government Worksheets (1-50)</p>
-                    </div>
-                </div>
-                <!-- Removed broken "Open Folder" button -->
-                <p class="text-sm text-slate-500 italic mt-4">Note: Individual files are linked in the pacing guide above.</p>
-            </div>
-        </div>
-
-    </main>
-
-    <footer class="bg-slate-900 text-slate-400 py-10 text-center text-sm mt-16 border-t border-slate-700">
-        <p class="mb-2 font-semibold">LRS Social Studies Curriculum</p>
-        <p>&copy; 2025 All Rights Reserved</p>
-    </footer>
-
-</body>
-</html>
+    <!-- DECEMBER / JANUARY TABLE -->
+    <div class="sheet-container">
+        <table>
+            <thead>
+                <tr>
+                    <th class="subject-col" rowspan="2">Subject</th>
+                    <th colspan="4" class="month-header">December</th>
+                    <th colspan="4" class="month-header">January</th>
+                </tr>
+                <tr>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- World History -->
+                <tr>
+                    <td class="subject-col">World History</td>
+                    <td><div class="cell-content"><span class="topic-text">Minoans</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Mycenaeans</span><div class="mls-tag">6-8.WH.2.GS.B</div></div></td>
+                    <td style="background-color: #f8f9fa; color: #5f6368; text-align: center; font-style: italic;">Exams</td>
+                    <td style="background-color: #fce8e6; color: #5f6368; text-align: center; font-style: italic;">Break</td>
+                    <td style="background-color: #fce8e6; color: #5f6368; text-align: center; font-style: italic;">Break</td>
+                    <td><div class="cell-content"><span class="topic-text">Greek Polis</span><div class="mls-tag">6-8.WH.2.GS.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Sparta/Athens</span><div class="mls-tag">6-8.WH.2.CC.C</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text">Greek Wars</span><div class="mls-tag">6-8.WH.2.CC.D</div></div></td>
+                </tr>
+                <!-- US History -->
+                <tr>
+                    <td class="subject-col">US History</td>
+                    <td><div class="cell-content"><span class="topic-text">Age of Jackson</span><a href="ccush_14_age_of_jackson.pdf" class="worksheet-link">📄 Worksheet (CC US E14)</a><div class="mls-tag">6-8.AH.3.CC.E</div></div></td>
+                    <td><div class="cell-content"><span class="topic-text"
