@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -121,7 +122,7 @@
         }
         .btn-video:hover { background-color: #bbdefb; }
 
-        /* MLS Standard Tag */
+        /* MLS Standard Tag with Tooltip */
         .mls-tag {
             display: inline-block;
             font-family: 'Courier New', monospace;
@@ -133,6 +134,51 @@
             border-radius: 3px;
             border: 1px solid #ffcdd2;
             margin-top: 6px;
+            position: relative;
+            cursor: help; /* Shows question mark cursor */
+        }
+
+        /* Tooltip Box */
+        .mls-tag:hover::after {
+            content: attr(data-desc); /* Fetches text from data-desc attribute */
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #263238;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: normal;
+            white-space: normal;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeIn 0.2s forwards;
+        }
+
+        /* Tooltip Arrow */
+        .mls-tag:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: #263238 transparent transparent transparent;
+            z-index: 100;
+            opacity: 0;
+            animation: fadeIn 0.2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         /* App Icons Footer */
@@ -205,14 +251,14 @@
                 <tbody>
                     <tr>
                         <td class="subject-col">World History</td>
-                        <td><span class="topic-title">Telling Time / Early Humans</span><div class="mls-tag">6-8.WH.1.CC.A</div></td>
-                        <td><span class="topic-title">Early Humans / Stone Age</span><div class="mls-tag">6-8.WH.2.GS.A</div></td>
-                        <td><span class="topic-title">Features of Civilization</span><div class="mls-tag">6-8.WH.2.PC.A</div></td>
-                        <td><span class="topic-title">Mesopotamia: Fertile Crescent</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
-                        <td><span class="topic-title">9/11 Context</span><div class="mls-tag">6-8.AH.5.CC.D</div></td>
-                        <td><span class="topic-title">Interactive Timelines</span><div class="mls-tag">6-8.WH.1.CC.A</div></td>
-                        <td><span class="topic-title">Sumer & Akkad</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
-                        <td><span class="topic-title">Babylon & Hittites</span><div class="mls-tag">6-8.WH.2.EC.A</div></td>
+                        <td><span class="topic-title">Telling Time / Early Humans</span><div class="mls-tag" data-desc="Analyze early civilizations and time periods.">6-8.WH.1.CC.A</div></td>
+                        <td><span class="topic-title">Early Humans / Stone Age</span><div class="mls-tag" data-desc="Analyze physical geography's impact on early societies.">6-8.WH.2.GS.A</div></td>
+                        <td><span class="topic-title">Features of Civilization</span><div class="mls-tag" data-desc="Compare features of ancient river valley civilizations.">6-8.WH.2.PC.A</div></td>
+                        <td><span class="topic-title">Mesopotamia: Fertile Crescent</span><div class="mls-tag" data-desc="Locate and analyze Mesopotamia's geographic significance.">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">9/11 Context</span><div class="mls-tag" data-desc="Analyze causes and effects of modern global terrorism.">6-8.AH.5.CC.D</div></td>
+                        <td><span class="topic-title">Interactive Timelines</span><div class="mls-tag" data-desc="Create and use tools like timelines to analyze change over time.">6-8.WH.1.CC.A</div></td>
+                        <td><span class="topic-title">Sumer & Akkad</span><div class="mls-tag" data-desc="Locate and analyze geography of Sumer and Akkad.">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">Babylon & Hittites</span><div class="mls-tag" data-desc="Analyze economic systems of Babylon and Hittites.">6-8.WH.2.EC.A</div></td>
                     </tr>
                     <tr>
                         <td class="subject-col">US History</td>
@@ -220,46 +266,46 @@
                             <span class="topic-title">Black Legend / Natives</span>
                             <a href="ccush_01_black_legend.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=6E9WU9TGrec" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.1.CC.C</div>
+                            <div class="mls-tag" data-desc="Trace colonial development and European impact (Exploration).">6-8.AH.1.CC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Colonizing America</span>
                             <a href="ccush_02_colonizing_america.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=o69TvQqyGdg" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.GS.C</div>
+                            <div class="mls-tag" data-desc="Evaluate diverse colonial regions and economies.">6-8.AH.3.GS.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Natives & English</span>
                             <a href="ccush_03_natives_and_english.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=TTYOQ05oOIc" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.1.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze conflict and cooperation with Native Americans.">6-8.AH.1.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Quakers / Dutch</span>
                             <a href="ccush_04_quakers_dutch_ladies.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=p47tZLJbdag" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.PC.E</div>
+                            <div class="mls-tag" data-desc="Analyze development of colonial religious freedom and cultural groups.">6-8.AH.3.PC.E</div>
                         </td>
                         <td>
                             <span class="topic-title">9/11 Context</span>
                             <a href="ush_911_background.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
-                            <div class="mls-tag">9-12.AH.6.PC.D</div>
+                            <div class="mls-tag" data-desc="Analyze causes and effects of modern global terrorism (9/11).">9-12.AH.6.PC.D</div>
                         </td>
                         <td>
                             <span class="topic-title">Timelines</span>
-                            <div class="mls-tag">6-8.AH.1.G.A</div>
+                            <div class="mls-tag" data-desc="Create and use geographic tools (maps/timelines).">6-8.AH.1.G.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Seven Years War</span>
                             <a href="ccush_05_seven_years_war.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=5vKGU3aEGss" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.2.CC.A</div>
+                            <div class="mls-tag" data-desc="Analyze causes of the American Revolution (7 Years War).">6-8.AH.2.CC.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Taxes & Smuggling</span>
                             <a href="ccush_06_taxes_and_smuggling.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=Eytc9ZaNWyc" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.2.CC.B</div>
+                            <div class="mls-tag" data-desc="Analyze British policies and colonial responses (Taxes).">6-8.AH.2.CC.B</div>
                         </td>
                     </tr>
                     <tr>
@@ -268,39 +314,39 @@
                             <span class="topic-title">Why Study Gov?</span>
                             <a href="ccgov_01_why_study_gov.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=lrk4oY7UxpQ" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.1.GS.A</div>
+                            <div class="mls-tag" data-desc="Apply principles of constitutional democracy.">9-12.GV.1.GS.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Bicameral Congress</span>
                             <a href="ccgov_02_bicameral_congress.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=n9defOwVWS8" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.A</div>
+                            <div class="mls-tag" data-desc="Analyze legislative branch structure and function.">9-12.GV.3.GS.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Checks & Balances</span>
                             <a href="ccgov_03_checks_balances.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=0bf3CwYCxXw" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.1.PC.B</div>
+                            <div class="mls-tag" data-desc="Explain separation of powers and checks and balances.">9-12.GV.1.PC.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Federalism</span>
                             <a href="ccgov_04_federalism.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=J0gosGXSgsI" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.1.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze the system of federalism and shared powers.">9-12.GV.1.GS.B</div>
                         </td>
-                        <td><span class="topic-title">9/11 Context</span><div class="mls-tag">9-12.GV.4.PC.D</div></td>
-                        <td><span class="topic-title">Timeline</span><div class="mls-tag">SS.9-12.G.1</div></td>
+                        <td><span class="topic-title">9/11 Context</span><div class="mls-tag" data-desc="Analyze national security vs civil liberties (post-9/11).">9-12.GV.4.PC.D</div></td>
+                        <td><span class="topic-title">Timeline</span><div class="mls-tag" data-desc="Use social studies inquiry to construct timelines.">SS.9-12.G.1</div></td>
                         <td>
                             <span class="topic-title">Compromises</span>
                             <a href="ccgov_05_con_compromise.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=kCCmufZjayc" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.1.CC.C</div>
+                            <div class="mls-tag" data-desc="Analyze compromises at the Constitutional Convention.">9-12.GV.1.CC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Elections</span>
                             <a href="ccgov_06_congress_elections.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/watch?v=Publq_8KYms" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.2.PC.A</div>
+                            <div class="mls-tag" data-desc="Analyze the election process and role of voters.">9-12.GV.2.PC.A</div>
                         </td>
                     </tr>
                 </tbody>
@@ -324,13 +370,13 @@
                 <tbody>
                     <tr>
                         <td class="subject-col">World History</td>
-                        <td><span class="topic-title">Egypt: Old Kingdom</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
-                        <td><span class="topic-title">Egypt: New Kingdom</span><div class="mls-tag">6-8.WH.2.PC.B</div></td>
-                        <td><span class="topic-title">Egypt Culture</span><div class="mls-tag">6-8.WH.2.PC.C</div></td>
-                        <td><span class="topic-title">India: Harappa</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
-                        <td><span class="topic-title">India: Caste System</span><div class="mls-tag">6-8.WH.2.PC.D</div></td>
-                        <td><span class="topic-title">China: Shang</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
-                        <td><span class="topic-title">China: Zhou</span><div class="mls-tag">6-8.WH.2.CC.C</div></td>
+                        <td><span class="topic-title">Egypt: Old Kingdom</span><div class="mls-tag" data-desc="Locate and analyze geography of Ancient Egypt (Old Kingdom).">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">Egypt: New Kingdom</span><div class="mls-tag" data-desc="Explain dynastic cycles in Ancient Egypt (New Kingdom).">6-8.WH.2.PC.B</div></td>
+                        <td><span class="topic-title">Egypt Culture</span><div class="mls-tag" data-desc="Analyze culture and religion of Ancient Egypt.">6-8.WH.2.PC.C</div></td>
+                        <td><span class="topic-title">India: Harappa</span><div class="mls-tag" data-desc="Locate and analyze geography of Indus Valley (Harappa).">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">India: Caste System</span><div class="mls-tag" data-desc="Analyze social structures (Caste System) in ancient India.">6-8.WH.2.PC.D</div></td>
+                        <td><span class="topic-title">China: Shang</span><div class="mls-tag" data-desc="Locate and analyze geography of Ancient China (Shang).">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">China: Zhou</span><div class="mls-tag" data-desc="Trace the rise and fall of the Zhou Dynasty.">6-8.WH.2.CC.C</div></td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Thanksgiving Break</td>
                     </tr>
                     <tr>
@@ -339,43 +385,43 @@
                             <span class="topic-title">Revolution</span>
                             <a href="ccush_07_revolution.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+7" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.2.CC.C</div>
+                            <div class="mls-tag" data-desc="Analyze key events and causes of the American Revolution.">6-8.AH.2.CC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Constitution</span>
                             <a href="ccush_08_constitution.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+8" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.2.GS.D</div>
+                            <div class="mls-tag" data-desc="Explain the principles of the US Constitution.">6-8.AH.2.GS.D</div>
                         </td>
                         <td>
                             <span class="topic-title">Political Parties</span>
                             <a href="ccush_09_political_parties.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+9" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.CC.A</div>
+                            <div class="mls-tag" data-desc="Trace the development of early political parties.">6-8.AH.3.CC.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Jefferson</span>
                             <a href="ccush_10_jefferson.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+10" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.GS.A</div>
+                            <div class="mls-tag" data-desc="Analyze the presidency of Thomas Jefferson and expansion.">6-8.AH.3.GS.A</div>
                         </td>
                         <td>
                             <span class="topic-title">War of 1812</span>
                             <a href="ccush_11_war_of_1812.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+11" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.CC.C</div>
+                            <div class="mls-tag" data-desc="Analyze causes and outcomes of the War of 1812.">6-8.AH.3.CC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Market Revolution</span>
                             <a href="ccush_12_market_revolution.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+12" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.EC.A</div>
+                            <div class="mls-tag" data-desc="Analyze the economic changes of the Market Revolution.">6-8.AH.3.EC.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Slavery</span>
                             <a href="ccush_13_slavery.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+13" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.PC.B</div>
+                            <div class="mls-tag" data-desc="Analyze the institution of slavery and its expansion.">6-8.AH.3.PC.B</div>
                         </td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Thanksgiving Break</td>
                     </tr>
@@ -385,43 +431,43 @@
                             <span class="topic-title">Committees</span>
                             <a href="ccgov_07_congress_committees.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+7" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze the role of committees in the legislative process.">9-12.GV.3.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Leadership</span>
                             <a href="ccgov_08_congress_leadership.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+8" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze congressional leadership roles.">9-12.GV.3.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Making Laws</span>
                             <a href="ccgov_09_bill_becomes_law.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+9" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.PC.A</div>
+                            <div class="mls-tag" data-desc="Explain how a bill becomes a law.">9-12.GV.3.PC.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Decisions</span>
                             <a href="ccgov_10_congress_decisions.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+10" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.2.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze factors influencing congressional decisions.">9-12.GV.2.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Pres. Power</span>
                             <a href="ccgov_11_presidential_power.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+11" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.C</div>
+                            <div class="mls-tag" data-desc="Analyze the powers of the presidency.">9-12.GV.3.GS.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Powers II</span>
                             <a href="ccgov_12_pres_power_two.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+12" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.C</div>
+                            <div class="mls-tag" data-desc="Analyze informal powers of the president.">9-12.GV.3.GS.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Delegation</span>
                             <a href="ccgov_13_congress_delegation.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+13" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.PC.B</div>
+                            <div class="mls-tag" data-desc="Explain delegation of power to the bureaucracy.">9-12.GV.3.PC.B</div>
                         </td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Thanksgiving Break</td>
                     </tr>
@@ -446,14 +492,14 @@
                 <tbody>
                     <tr>
                         <td class="subject-col">World History</td>
-                        <td><span class="topic-title">Minoans</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
-                        <td><span class="topic-title">Mycenaeans</span><div class="mls-tag">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">Minoans</span><div class="mls-tag" data-desc="Locate and analyze geography of Minoan civilization.">6-8.WH.2.GS.B</div></td>
+                        <td><span class="topic-title">Mycenaeans</span><div class="mls-tag" data-desc="Locate and analyze geography of Mycenaean civilization.">6-8.WH.2.GS.B</div></td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Exams</td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Break</td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Break</td>
-                        <td><span class="topic-title">Greek Polis</span><div class="mls-tag">6-8.WH.2.GS.C</div></td>
-                        <td><span class="topic-title">Sparta/Athens</span><div class="mls-tag">6-8.WH.2.CC.C</div></td>
-                        <td><span class="topic-title">Greek Wars</span><div class="mls-tag">6-8.WH.2.CC.D</div></td>
+                        <td><span class="topic-title">Greek Polis</span><div class="mls-tag" data-desc="Analyze geography's effect on the Greek Polis.">6-8.WH.2.GS.C</div></td>
+                        <td><span class="topic-title">Sparta/Athens</span><div class="mls-tag" data-desc="Compare features of Sparta and Athens.">6-8.WH.2.CC.C</div></td>
+                        <td><span class="topic-title">Greek Wars</span><div class="mls-tag" data-desc="Analyze causes/effects of Persian and Peloponnesian Wars.">6-8.WH.2.CC.D</div></td>
                     </tr>
                     <tr>
                         <td class="subject-col">US History</td>
@@ -461,13 +507,13 @@
                             <span class="topic-title">Age of Jackson</span>
                             <a href="ccush_14_age_of_jackson.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+14" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.CC.E</div>
+                            <div class="mls-tag" data-desc="Analyze the impact of the Age of Jackson.">6-8.AH.3.CC.E</div>
                         </td>
                         <td>
                             <span class="topic-title">Reform Mvmts</span>
                             <a href="ccush_15_reform_movements.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+15" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.PC.E</div>
+                            <div class="mls-tag" data-desc="Evaluate the impact of Antebellum reform movements.">6-8.AH.3.PC.E</div>
                         </td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Exams</td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Break</td>
@@ -476,19 +522,19 @@
                             <span class="topic-title">Women's Mvmt</span>
                             <a href="ccush_16_womens_movements.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+16" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze the development of the Women's Rights Movement.">6-8.AH.3.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Westward Exp.</span>
                             <a href="ccush_17_westward_expansion.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+17" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.3.CC.F</div>
+                            <div class="mls-tag" data-desc="Evaluate the impact of Westward Expansion.">6-8.AH.3.CC.F</div>
                         </td>
                         <td>
                             <span class="topic-title">Election 1860</span>
                             <a href="ccush_18_election_1860.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+18" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">6-8.AH.4.CC.A</div>
+                            <div class="mls-tag" data-desc="Analyze the Election of 1860 and secession.">6-8.AH.4.CC.A</div>
                         </td>
                     </tr>
                     <tr>
@@ -497,13 +543,13 @@
                             <span class="topic-title">Presidents</span>
                             <a href="ccgov_14_how_presidents_govern.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+14" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.C</div>
+                            <div class="mls-tag" data-desc="Analyze how presidents govern and use power.">9-12.GV.3.GS.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Bureaucracy</span>
                             <a href="ccgov_15_bureaucracy_basics.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+15" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.E</div>
+                            <div class="mls-tag" data-desc="Explain the role and structure of the bureaucracy.">9-12.GV.3.GS.E</div>
                         </td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Exams</td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Break</td>
@@ -512,19 +558,19 @@
                             <span class="topic-title">Agencies</span>
                             <a href="ccgov_16_types_of_bureaucracies.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+16" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.PC.E</div>
+                            <div class="mls-tag" data-desc="Differentiate types of bureaucratic agencies.">9-12.GV.3.PC.E</div>
                         </td>
                         <td>
                             <span class="topic-title">Oversight</span>
                             <a href="ccgov_17_controlling_bureaucracies.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+17" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.CC.D</div>
+                            <div class="mls-tag" data-desc="Analyze congressional oversight of the bureaucracy.">9-12.GV.3.CC.D</div>
                         </td>
                         <td>
                             <span class="topic-title">Legal System</span>
                             <a href="ccgov_18_legal_system_basics.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+18" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.D</div>
+                            <div class="mls-tag" data-desc="Analyze structure and function of the judicial branch.">9-12.GV.3.GS.D</div>
                         </td>
                     </tr>
                 </tbody>
@@ -548,14 +594,14 @@
                 <tbody>
                     <tr>
                         <td class="subject-col">World History</td>
-                        <td><span class="topic-title">Rome Republic</span><div class="mls-tag">6-8.WH.2.GS.C</div></td>
-                        <td><span class="topic-title">Rome Empire</span><div class="mls-tag">6-8.WH.2.PC.B</div></td>
-                        <td><span class="topic-title">Christianity</span><div class="mls-tag">6-8.WH.2.PC.C</div></td>
-                        <td><span class="topic-title">Rome Fall</span><div class="mls-tag">6-8.WH.2.CC.D</div></td>
-                        <td><span class="topic-title">Feudalism</span><div class="mls-tag">6-8.WH.3.GS.A</div></td>
-                        <td><span class="topic-title">Crusades</span><div class="mls-tag">6-8.WH.3.CC.A</div></td>
-                        <td><span class="topic-title">Renaissance</span><div class="mls-tag">6-8.WH.3.PC.B</div></td>
-                        <td><span class="topic-title">Reformation</span><div class="mls-tag">6-8.WH.3.PC.C</div></td>
+                        <td><span class="topic-title">Rome Republic</span><div class="mls-tag" data-desc="Locate and analyze geography of the Roman Republic.">6-8.WH.2.GS.C</div></td>
+                        <td><span class="topic-title">Rome Empire</span><div class="mls-tag" data-desc="Trace the transition from Republic to Empire.">6-8.WH.2.PC.B</div></td>
+                        <td><span class="topic-title">Christianity</span><div class="mls-tag" data-desc="Analyze the rise and spread of Christianity.">6-8.WH.2.PC.C</div></td>
+                        <td><span class="topic-title">Rome Fall</span><div class="mls-tag" data-desc="Analyze causes and effects of the Fall of Rome.">6-8.WH.2.CC.D</div></td>
+                        <td><span class="topic-title">Feudalism</span><div class="mls-tag" data-desc="Analyze the feudal system in Europe.">6-8.WH.3.GS.A</div></td>
+                        <td><span class="topic-title">Crusades</span><div class="mls-tag" data-desc="Analyze causes and effects of the Crusades.">6-8.WH.3.CC.A</div></td>
+                        <td><span class="topic-title">Renaissance</span><div class="mls-tag" data-desc="Trace the development of the Renaissance.">6-8.WH.3.PC.B</div></td>
+                        <td><span class="topic-title">Reformation</span><div class="mls-tag" data-desc="Analyze causes and effects of the Reformation.">6-8.WH.3.PC.C</div></td>
                     </tr>
                     <tr>
                         <td class="subject-col">US History</td>
@@ -563,38 +609,38 @@
                             <span class="topic-title">Gilded Age</span>
                             <a href="ccush_26_gilded_age.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+26" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.4.EC.C</div>
+                            <div class="mls-tag" data-desc="Analyze economic growth during the Gilded Age.">9-12.AH.4.EC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Progressive</span>
                             <a href="ccush_27_progressive_era.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+27" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.4.GS.C</div>
+                            <div class="mls-tag" data-desc="Evaluate the impact of the Progressive Era.">9-12.AH.4.GS.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Imperialism</span>
                             <a href="ccush_28_imperialism.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+28" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.4.CC.D</div>
+                            <div class="mls-tag" data-desc="Analyze causes and effects of US Imperialism.">9-12.AH.4.CC.D</div>
                         </td>
                         <td>
                             <span class="topic-title">WWI</span>
                             <a href="ccush_30_wwi.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+30" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.4.CC.E</div>
+                            <div class="mls-tag" data-desc="Analyze US involvement in WWI.">9-12.AH.4.CC.E</div>
                         </td>
-                        <td><span class="topic-title">Homefront</span><div class="mls-tag">9-12.AH.4.GS.D</div></td>
+                        <td><span class="topic-title">Homefront</span><div class="mls-tag" data-desc="Analyze domestic impact of WWI (Homefront).">9-12.AH.4.GS.D</div></td>
                         <td>
                             <span class="topic-title">Women's Suffrage</span>
                             <a href="ccush_31_womens_suffrage.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+31" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.4.PC.E</div>
+                            <div class="mls-tag" data-desc="Analyze the struggle for Women's Suffrage.">9-12.AH.4.PC.E</div>
                         </td>
                         <td>
                             <span class="topic-title">Roaring 20s</span>
                             <a href="ccush_32_roaring_20s.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+32" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.5.CC.A</div>
+                            <div class="mls-tag" data-desc="Analyze social/cultural changes of the 1920s.">9-12.AH.5.CC.A</div>
                         </td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Spring Break</td>
                     </tr>
@@ -604,43 +650,43 @@
                             <span class="topic-title">Court System</span>
                             <a href="ccgov_19_structure_court_system.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+19" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.GS.D</div>
+                            <div class="mls-tag" data-desc="Analyze structure of the court system.">9-12.GV.3.GS.D</div>
                         </td>
                         <td>
                             <span class="topic-title">Supreme Court</span>
                             <a href="ccgov_20_supreme_court_pro.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+20" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.PC.C</div>
+                            <div class="mls-tag" data-desc="Analyze procedures of the Supreme Court.">9-12.GV.3.PC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Judicial Review</span>
                             <a href="ccgov_21_judicial_review.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+21" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.CC.C</div>
+                            <div class="mls-tag" data-desc="Explain the concept of Judicial Review.">9-12.GV.3.CC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Decisions</span>
                             <a href="ccgov_22_judicial_decisions.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+22" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.3.CC.D</div>
+                            <div class="mls-tag" data-desc="Analyze landmark Supreme Court decisions.">9-12.GV.3.CC.D</div>
                         </td>
                         <td>
                             <span class="topic-title">Civil Rights</span>
                             <a href="ccgov_23_civil_rights_liberties.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+23" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.PC.A</div>
+                            <div class="mls-tag" data-desc="Analyze protection of Civil Rights/Liberties.">9-12.GV.5.PC.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Religion</span>
                             <a href="ccgov_24_freedom_of_religion.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+24" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze Freedom of Religion.">9-12.GV.5.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">Speech</span>
                             <a href="ccgov_25_freedom_of_speech.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+25" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.GS.B</div>
+                            <div class="mls-tag" data-desc="Analyze Freedom of Speech.">9-12.GV.5.GS.B</div>
                         </td>
                         <td class="bg-gray-100 text-center italic text-gray-500">Spring Break</td>
                     </tr>
@@ -665,14 +711,14 @@
                 <tbody>
                     <tr>
                         <td class="subject-col">World History</td>
-                        <td><span class="topic-title">Civil War</span><div class="mls-tag">9-12.AH.4.CC.A</div></td>
-                        <td><span class="topic-title">Battles & Maps</span><div class="mls-tag">9-12.AH.4.GS.B</div></td>
-                        <td><span class="topic-title">WWI Leadup</span><div class="mls-tag">9-12.WH.4.CC.C</div></td>
-                        <td><span class="topic-title">Trench Warfare</span><div class="mls-tag">9-12.WH.4.GS.C</div></td>
-                        <td><span class="topic-title">Versailles/WWII</span><div class="mls-tag">9-12.WH.4.PC.D</div></td>
-                        <td><span class="topic-title">WWII Leadup</span><div class="mls-tag">9-12.WH.5.CC.A</div></td>
-                        <td><span class="topic-title">D-Day/Holocaust</span><div class="mls-tag">9-12.WH.5.GS.B</div></td>
-                        <td><span class="topic-title">Pearl Harbor</span><div class="mls-tag">9-12.WH.5.PC.C</div></td>
+                        <td><span class="topic-title">Civil War</span><div class="mls-tag" data-desc="Analyze causes and events of the Civil War.">9-12.AH.4.CC.A</div></td>
+                        <td><span class="topic-title">Battles & Maps</span><div class="mls-tag" data-desc="Analyze Civil War battles and geography.">9-12.AH.4.GS.B</div></td>
+                        <td><span class="topic-title">WWI Leadup</span><div class="mls-tag" data-desc="Analyze causes of WWI.">9-12.WH.4.CC.C</div></td>
+                        <td><span class="topic-title">Trench Warfare</span><div class="mls-tag" data-desc="Analyze WWI technology and trench warfare.">9-12.WH.4.GS.C</div></td>
+                        <td><span class="topic-title">Versailles/WWII</span><div class="mls-tag" data-desc="Analyze Treaty of Versailles and WWII leadup.">9-12.WH.4.PC.D</div></td>
+                        <td><span class="topic-title">WWII Leadup</span><div class="mls-tag" data-desc="Analyze causes of WWII.">9-12.WH.5.CC.A</div></td>
+                        <td><span class="topic-title">D-Day/Holocaust</span><div class="mls-tag" data-desc="Analyze Holocaust and key WWII battles (D-Day).">9-12.WH.5.GS.B</div></td>
+                        <td><span class="topic-title">Pearl Harbor</span><div class="mls-tag" data-desc="Analyze impact of Pearl Harbor.">9-12.WH.5.PC.C</div></td>
                     </tr>
                     <tr>
                         <td class="subject-col">US History</td>
@@ -680,100 +726,100 @@
                             <span class="topic-title">Great Depression</span>
                             <a href="ccush_33_great_depression.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+33" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.5.EC.B</div>
+                            <div class="mls-tag" data-desc="Analyze causes of the Great Depression.">9-12.AH.5.EC.B</div>
                         </td>
                         <td>
                             <span class="topic-title">New Deal</span>
                             <a href="ccush_34_the_new_deal.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+34" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.5.GS.B</div>
+                            <div class="mls-tag" data-desc="Evaluate the effectiveness of the New Deal.">9-12.AH.5.GS.B</div>
                         </td>
                         <td>
                             <span class="topic-title">WWII Part 1</span>
                             <a href="ccush_35_wwii_part1.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+35" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.5.CC.C</div>
+                            <div class="mls-tag" data-desc="Analyze US entry and early WWII actions.">9-12.AH.5.CC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">WWII Part 2</span>
                             <a href="ccush_36_wwii_part2.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+36" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.5.GS.C</div>
+                            <div class="mls-tag" data-desc="Analyze the homefront and end of WWII.">9-12.AH.5.GS.C</div>
                         </td>
                         <td>
                             <span class="topic-title">Cold War</span>
                             <a href="ccush_37_the_cold_war.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+37" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.5.CC.D</div>
+                            <div class="mls-tag" data-desc="Analyze causes and early events of the Cold War.">9-12.AH.5.CC.D</div>
                         </td>
                         <td>
                             <span class="topic-title">Cold War Asia</span>
                             <a href="ccush_38_the_cold_war_in_asia.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+38" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.6.PC.A</div>
+                            <div class="mls-tag" data-desc="Analyze Cold War conflicts in Asia (Korea/Vietnam).">9-12.AH.6.PC.A</div>
                         </td>
                         <td>
                             <span class="topic-title">Civil Rights</span>
                             <a href="ccush_39_civil_rights_and_the__1950s.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+39" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.6.PC.C</div>
+                            <div class="mls-tag" data-desc="Trace the Modern Civil Rights Movement.">9-12.AH.6.PC.C</div>
                         </td>
                         <td>
                             <span class="topic-title">The 1960s</span>
                             <a href="ccush_40_the_1960s_in_america.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+US+History+40" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.AH.6.CC.D</div>
+                            <div class="mls-tag" data-desc="Analyze social and political changes of the 1960s.">9-12.AH.6.CC.D</div>
                         </td>
                     </tr>
                     <tr>
                         <td class="subject-col">Government</td>
                         <td>
-                            <span class="topic-title">Press</span>
-                            <a href="ccgov_26_freedom_press.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
-                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+26" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.PC.B</div>
-                        </td>
-                        <td>
-                            <span class="topic-title">Search & Seizure</span>
-                            <a href="ccgov_27_search_seizure.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
-                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+27" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.GS.C</div>
-                        </td>
-                        <td>
-                            <span class="topic-title">Due Process</span>
-                            <a href="ccgov_28_due_process.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
-                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+28" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.GS.C</div>
-                        </td>
-                        <td>
-                            <span class="topic-title">Equal Protection</span>
-                            <a href="ccgov_29_equal_protection.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
-                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+29" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.CC.D</div>
-                        </td>
-                        <td>
-                            <span class="topic-title">Sex Discrimination</span>
-                            <a href="ccgov_30_sex_discrimination.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
-                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+30" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.PC.E</div>
-                        </td>
-                        <td>
                             <span class="topic-title">Discrimination</span>
                             <a href="ccgov_31_discrimination.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+31" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.PC.E</div>
+                            <div class="mls-tag" data-desc="Analyze laws regarding discrimination.">9-12.GV.5.PC.E</div>
                         </td>
                         <td>
                             <span class="topic-title">Affirm. Action</span>
                             <a href="ccgov_32_affirm_action.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+32" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.5.CC.E</div>
+                            <div class="mls-tag" data-desc="Evaluate affirmative action policies.">9-12.GV.5.CC.E</div>
                         </td>
                         <td>
                             <span class="topic-title">Public Opinion</span>
                             <a href="ccgov_33_public_opinion.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
                             <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+33" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
-                            <div class="mls-tag">9-12.GV.2.PC.B</div>
+                            <div class="mls-tag" data-desc="Analyze formation of public opinion.">9-12.GV.2.PC.B</div>
+                        </td>
+                        <td>
+                            <span class="topic-title">Shape Opinion</span>
+                            <a href="ccgov_34_shape_public_opinion.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
+                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+34" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
+                            <div class="mls-tag" data-desc="Analyze media and interest groups' influence.">9-12.GV.2.PC.B</div>
+                        </td>
+                        <td>
+                            <span class="topic-title">Pol. Ideology</span>
+                            <a href="ccgov_35_political_ideology.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
+                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+35" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
+                            <div class="mls-tag" data-desc="Compare political ideologies.">9-12.GV.4.GS.A</div>
+                        </td>
+                        <td>
+                            <span class="topic-title">Election Basics</span>
+                            <a href="ccgov_36_election_basics.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
+                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+36" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
+                            <div class="mls-tag" data-desc="Analyze election rules and systems.">9-12.GV.2.GS.B</div>
+                        </td>
+                        <td>
+                            <span class="topic-title">Gerrymandering</span>
+                            <a href="ccgov_37_gerrymandering.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
+                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+37" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
+                            <div class="mls-tag" data-desc="Analyze redistricting and gerrymandering.">9-12.GV.3.PC.A</div>
+                        </td>
+                        <td>
+                            <span class="topic-title">Voter Decide</span>
+                            <a href="ccgov_38_how_voters_decide.pdf" target="_blank" class="resource-btn btn-pdf"><i class="fas fa-file-pdf"></i> Worksheet</a>
+                            <a href="https://www.youtube.com/results?search_query=Crash+Course+Government+38" target="_blank" class="resource-btn btn-video"><i class="fas fa-play-circle"></i> Video</a>
+                            <div class="mls-tag" data-desc="Analyze factors influencing voter behavior.">9-12.GV.2.CC.A</div>
                         </td>
                     </tr>
                 </tbody>
@@ -804,3 +850,5 @@
 
 </body>
 </html>
+
+
