@@ -12,7 +12,6 @@
             --brand-blue: #0277bd;
             --bg-break: #eceff1;
             --text-break: #78909c;
-            --border-color: #d1d5db;
         }
 
         body {
@@ -33,81 +32,64 @@
             margin-bottom: 2rem;
         }
 
-        /* --- 2-Month Block Container --- */
-        .double-month-block {
+        /* --- Month Blocks --- */
+        .month-block {
             background: white;
-            max-width: 1400px; /* Wide enough for 2 months */
-            margin: 0 auto 2.5rem auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             border: 1px solid #e5e7eb;
-            overflow-x: auto; /* Allow scroll on small screens */
         }
+
+        /* Month Headers */
+        .month-title {
+            padding: 12px 20px;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .theme-teal .month-title { background-color: var(--brand-teal); }
+        .theme-blue .month-title { background-color: var(--brand-blue); }
 
         /* Table Styling */
         table {
             width: 100%;
-            min-width: 1200px; /* Ensures layout doesn't crush on mobile */
             border-collapse: collapse;
             font-size: 13px;
             table-layout: fixed;
         }
 
-        /* Column Widths */
-        th.col-subject, td.col-subject { width: 120px; }
-        th.col-week, td { width: 11%; } /* 8 weeks @ ~11% each */
-
-        /* Header Cells */
-        th.month-header {
-            color: white;
-            padding: 12px;
-            text-transform: uppercase;
-            font-size: 1.1rem;
-            font-weight: 800;
-            letter-spacing: 0.05em;
-            border-right: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .bg-teal { background-color: var(--brand-teal); }
-        .bg-blue { background-color: var(--brand-blue); }
-
-        th.sub-header {
-            background-color: #374151;
-            color: #f3f4f6;
-            font-size: 11px;
-            font-weight: 600;
-            padding: 6px;
-            text-align: center;
-            border-right: 1px solid #4b5563;
-        }
-
-        /* Subject Column (Sticky) */
-        .col-subject {
-            position: sticky;
-            left: 0;
+        th {
             background-color: #f9fafb;
-            z-index: 20;
+            color: #4b5563;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            padding: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            width: 20%;
+        }
+
+        /* First column (Subject) needs specific width */
+        th:first-child, td:first-child {
+            width: 120px;
+            background-color: #fff;
+            border-right: 2px solid #e5e7eb;
             font-weight: 800;
             color: #111827;
-            border-right: 3px solid #9ca3af;
             text-align: center;
             vertical-align: middle;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
         }
-        
-        /* Subject Text Colors */
-        .text-wh { color: #15803d; }
-        .text-us { color: #1d4ed8; }
-        .text-gov { color: #b91c1c; }
 
-        /* Cells */
         td {
-            padding: 8px;
-            border-bottom: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
+            padding: 10px;
+            border-bottom: 1px solid #f3f4f6;
+            border-right: 1px solid #f3f4f6;
             vertical-align: top;
             height: 120px;
-            background-color: white;
         }
 
         /* Break Cells */
@@ -118,24 +100,31 @@
             vertical-align: middle;
             font-weight: 700;
             font-style: italic;
+            font-size: 0.9rem;
             border: 1px dashed #cfd8dc;
         }
 
         /* Content Styling */
-        .topic-content { display: flex; flex-direction: column; gap: 6px; }
-        .topic-name { font-weight: 700; color: #1f2937; line-height: 1.3; font-size: 12px; }
+        .topic {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1f2937;
+            line-height: 1.3;
+        }
 
         /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 4px 8px;
+            padding: 3px 8px;
             border-radius: 4px;
             font-size: 10px;
             font-weight: 700;
             text-decoration: none;
-            width: fit-content;
+            margin-right: 4px;
+            margin-bottom: 4px;
             transition: all 0.2s;
         }
         .btn-pdf { background:#dcfce7; color:#166534; border:1px solid #86efac; }
@@ -145,19 +134,18 @@
 
         /* MLS Tag */
         .mls {
-            display: inline-block;
+            display: block;
+            width: fit-content;
             background: #f3f4f6;
-            color: #ef4444;
+            color: #b91c1c;
             font-family: monospace;
             font-size: 9px;
             font-weight: 700;
             padding: 2px 5px;
-            border-radius: 3px;
-            border: 1px solid #e5e7eb;
-            margin-top: 4px;
+            border-radius: 4px;
+            margin-top: 6px;
             cursor: help;
             position: relative;
-            width: fit-content;
         }
 
         /* Tooltip */
@@ -169,16 +157,15 @@
             transform: translateX(-50%);
             background: #1f2937;
             color: white;
-            padding: 8px;
+            padding: 6px 10px;
             border-radius: 4px;
             font-size: 11px;
-            width: 180px;
-            z-index: 50;
+            width: 160px;
+            z-index: 10;
             text-align: center;
             pointer-events: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             font-family: sans-serif;
-            white-space: normal;
         }
 
         /* Footer Apps */
@@ -186,7 +173,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 20px;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 3rem auto;
             padding: 0 1rem;
         }
@@ -202,6 +189,12 @@
         }
         .app-card:hover { transform: translateY(-5px); border-color: var(--brand-teal); }
         .app-icon { font-size: 2rem; color: var(--brand-teal); margin-bottom: 0.5rem; }
+
+        /* Mobile Fix */
+        @media (max-width: 640px) {
+            table { min-width: 600px; } /* Force scroll only on very small phones */
+            .month-block { overflow-x: auto; }
+        }
     </style>
 </head>
 <body>
@@ -211,99 +204,417 @@
         <p class="text-teal-100 font-medium uppercase tracking-widest text-sm">Social Studies Curriculum Map (6-12)</p>
     </header>
 
-    <div class="p-2 md:p-4">
+    <!-- ==================== AUGUST (Teal) ==================== -->
+    <div class="month-block theme-teal">
+        <div class="month-title">August</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">Telling Time / Early Humans</span><span class="mls" data-desc="Analyze early civilizations.">6-8.WH.1.CC.A</span></td>
+                    <td><span class="topic">Early Humans / Stone Age</span><span class="mls" data-desc="Physical geography impact.">6-8.WH.2.GS.A</span></td>
+                    <td><span class="topic">Features of Civ</span><span class="mls" data-desc="Compare river valley civs.">6-8.WH.2.PC.A</span></td>
+                    <td><span class="topic">Mesopotamia</span><span class="mls" data-desc="Fertile Crescent geography.">6-8.WH.2.GS.B</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Black Legend</span><a href="ccush_01_black_legend.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/6E9WU9TGrec" class="btn btn-vid">Video</a><span class="mls" data-desc="Colonial development.">6-8.AH.1.CC.C</span></td>
+                    <td><span class="topic">Colonization</span><a href="ccush_02_colonizing_america.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/o69TvQqyGdg" class="btn btn-vid">Video</a><span class="mls" data-desc="Colonial regions.">6-8.AH.3.GS.C</span></td>
+                    <td><span class="topic">Natives & English</span><a href="ccush_03_natives_and_english.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/TTYOQ05oOIc" class="btn btn-vid">Video</a><span class="mls" data-desc="Conflict/Cooperation.">6-8.AH.1.GS.B</span></td>
+                    <td><span class="topic">Quakers/Dutch</span><a href="ccush_04_quakers_dutch_ladies.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/p47tZLJbdag" class="btn btn-vid">Video</a><span class="mls" data-desc="Religious freedom.">6-8.AH.3.PC.E</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Why Gov?</span><a href="ccgov_01_why_study_gov.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/lrk4oY7UxpQ" class="btn btn-vid">Video</a><span class="mls" data-desc="Democratic principles.">9-12.GV.1.GS.A</span></td>
+                    <td><span class="topic">Congress</span><a href="ccgov_02_bicameral_congress.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/n9defOwVWS8" class="btn btn-vid">Video</a><span class="mls" data-desc="Legislative branch.">9-12.GV.3.GS.A</span></td>
+                    <td><span class="topic">Checks & Balances</span><a href="ccgov_03_checks_balances.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/0bf3CwYCxXw" class="btn btn-vid">Video</a><span class="mls" data-desc="Separation of powers.">9-12.GV.1.PC.B</span></td>
+                    <td><span class="topic">Federalism</span><a href="ccgov_04_federalism.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/J0gosGXSgsI" class="btn btn-vid">Video</a><span class="mls" data-desc="Shared powers.">9-12.GV.1.GS.B</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <!-- ==================== AUG & SEPT ==================== -->
-        <div class="double-month-block">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="col-subject" rowspan="2">Subject</th>
-                        <th colspan="4" class="month-header bg-teal">August</th>
-                        <th colspan="4" class="month-header bg-blue">September</th>
-                    </tr>
-                    <tr>
-                        <th class="sub-header">Week 1</th><th class="sub-header">Week 2</th><th class="sub-header">Week 3</th><th class="sub-header">Week 4</th>
-                        <th class="sub-header">Week 1</th><th class="sub-header">Week 2</th><th class="sub-header">Week 3</th><th class="sub-header">Week 4</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="col-subject text-wh">World History</td>
-                        <td><div class="topic-content"><span class="topic-name">Telling Time / Early Humans</span><span class="mls" data-desc="Analyze early civilizations.">6-8.WH.1.CC.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Stone Age</span><span class="mls" data-desc="Physical geography impact.">6-8.WH.2.GS.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Features of Civ</span><span class="mls" data-desc="Compare river valley civs.">6-8.WH.2.PC.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Mesopotamia</span><span class="mls" data-desc="Fertile Crescent geography.">6-8.WH.2.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">9/11 Context</span><span class="mls" data-desc="Modern terrorism causes.">6-8.AH.5.CC.D</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Timelines</span><span class="mls" data-desc="Analyze change over time.">6-8.WH.1.CC.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Sumer & Akkad</span><span class="mls" data-desc="Geography of Sumer.">6-8.WH.2.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Babylon & Hittites</span><span class="mls" data-desc="Economic systems.">6-8.WH.2.EC.A</span></div></td>
-                    </tr>
-                    <tr>
-                        <td class="col-subject text-us">US History</td>
-                        <td><div class="topic-content"><span class="topic-name">Black Legend</span><a href="ccush_01_black_legend.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/6E9WU9TGrec" class="btn btn-vid">Video</a><span class="mls" data-desc="Colonial development.">6-8.AH.1.CC.C</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Colonization</span><a href="ccush_02_colonizing_america.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/o69TvQqyGdg" class="btn btn-vid">Video</a><span class="mls" data-desc="Colonial regions.">6-8.AH.3.GS.C</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Natives/English</span><a href="ccush_03_natives_and_english.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/TTYOQ05oOIc" class="btn btn-vid">Video</a><span class="mls" data-desc="Conflict/Cooperation.">6-8.AH.1.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Quakers/Dutch</span><a href="ccush_04_quakers_dutch_ladies.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/p47tZLJbdag" class="btn btn-vid">Video</a><span class="mls" data-desc="Religious freedom.">6-8.AH.3.PC.E</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">9/11 Context</span><a href="ush_911_background.pdf" target="_blank" class="btn btn-pdf">PDF</a><span class="mls" data-desc="Impact of 9/11.">9-12.AH.6.PC.D</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Timelines</span><span class="mls" data-desc="Geographic tools.">6-8.AH.1.G.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">7 Years War</span><a href="ccush_05_seven_years_war.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/5vKGU3aEGss" class="btn btn-vid">Video</a><span class="mls" data-desc="Causes of Revolution.">6-8.AH.2.CC.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Taxes</span><a href="ccush_06_taxes_and_smuggling.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Eytc9ZaNWyc" class="btn btn-vid">Video</a><span class="mls" data-desc="British policies.">6-8.AH.2.CC.B</span></div></td>
-                    </tr>
-                    <tr>
-                        <td class="col-subject text-gov">Government</td>
-                        <td><div class="topic-content"><span class="topic-name">Why Gov?</span><a href="ccgov_01_why_study_gov.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/lrk4oY7UxpQ" class="btn btn-vid">Video</a><span class="mls" data-desc="Democratic principles.">9-12.GV.1.GS.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Congress</span><a href="ccgov_02_bicameral_congress.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/n9defOwVWS8" class="btn btn-vid">Video</a><span class="mls" data-desc="Legislative branch.">9-12.GV.3.GS.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Checks & Balances</span><a href="ccgov_03_checks_balances.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/0bf3CwYCxXw" class="btn btn-vid">Video</a><span class="mls" data-desc="Separation of powers.">9-12.GV.1.PC.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Federalism</span><a href="ccgov_04_federalism.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/J0gosGXSgsI" class="btn btn-vid">Video</a><span class="mls" data-desc="Shared powers.">9-12.GV.1.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">9/11 Context</span><span class="mls" data-desc="Security vs Liberty.">9-12.GV.4.PC.D</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Timeline</span><span class="mls" data-desc="Inquiry tools.">SS.9-12.G.1</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Compromises</span><a href="ccgov_05_con_compromise.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/kCCmufZjayc" class="btn btn-vid">Video</a><span class="mls" data-desc="Constitution compromises.">9-12.GV.1.CC.C</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Elections</span><a href="ccgov_06_congress_elections.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Publq_8KYms" class="btn btn-vid">Video</a><span class="mls" data-desc="Election process.">9-12.GV.2.PC.A</span></div></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- ==================== SEPTEMBER (Blue) ==================== -->
+    <div class="month-block theme-blue">
+        <div class="month-title">September</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">9/11 Context</span><span class="mls" data-desc="Modern terrorism.">6-8.AH.5.CC.D</span></td>
+                    <td><span class="topic">Timelines</span><span class="mls" data-desc="Analyze change over time.">6-8.WH.1.CC.A</span></td>
+                    <td><span class="topic">Sumer & Akkad</span><span class="mls" data-desc="Geography of Sumer.">6-8.WH.2.GS.B</span></td>
+                    <td><span class="topic">Babylon & Hittites</span><span class="mls" data-desc="Economic systems.">6-8.WH.2.EC.A</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">9/11 Context</span><a href="ush_911_background.pdf" class="btn btn-pdf">PDF</a><span class="mls" data-desc="Impact of 9/11.">9-12.AH.6.PC.D</span></td>
+                    <td><span class="topic">Timelines</span><span class="mls" data-desc="Geographic tools.">6-8.AH.1.G.A</span></td>
+                    <td><span class="topic">7 Years War</span><a href="ccush_05_seven_years_war.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/5vKGU3aEGss" class="btn btn-vid">Video</a><span class="mls" data-desc="Causes of Revolution.">6-8.AH.2.CC.A</span></td>
+                    <td><span class="topic">Taxes</span><a href="ccush_06_taxes_and_smuggling.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Eytc9ZaNWyc" class="btn btn-vid">Video</a><span class="mls" data-desc="British policies.">6-8.AH.2.CC.B</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">9/11 Context</span><span class="mls" data-desc="Security vs Liberty.">9-12.GV.4.PC.D</span></td>
+                    <td><span class="topic">Timeline</span><span class="mls" data-desc="Inquiry tools.">SS.9-12.G.1</span></td>
+                    <td><span class="topic">Compromises</span><a href="ccgov_05_con_compromise.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/kCCmufZjayc" class="btn btn-vid">Video</a><span class="mls" data-desc="Constitutional compromises.">9-12.GV.1.CC.C</span></td>
+                    <td><span class="topic">Elections</span><a href="ccgov_06_congress_elections.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Publq_8KYms" class="btn btn-vid">Video</a><span class="mls" data-desc="Election process.">9-12.GV.2.PC.A</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-        <!-- ==================== OCT & NOV ==================== -->
-        <div class="double-month-block">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="col-subject" rowspan="2">Subject</th>
-                        <th colspan="4" class="month-header bg-teal">October</th>
-                        <th colspan="4" class="month-header bg-blue">November</th>
-                    </tr>
-                    <tr>
-                        <th class="sub-header">Week 1</th><th class="sub-header">Week 2</th><th class="sub-header">Week 3</th><th class="sub-header">Week 4</th>
-                        <th class="sub-header">Week 1</th><th class="sub-header">Week 2</th><th class="sub-header">Week 3</th><th class="sub-header">Week 4</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="col-subject text-wh">World History</td>
-                        <td><div class="topic-content"><span class="topic-name">Egypt Old</span><span class="mls" data-desc="Ancient Egypt Geo.">6-8.WH.2.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Egypt New</span><span class="mls" data-desc="Dynastic cycles.">6-8.WH.2.PC.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Egypt Culture</span><span class="mls" data-desc="Culture/Religion.">6-8.WH.2.PC.C</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Harappa</span><span class="mls" data-desc="Indus Valley Geo.">6-8.WH.2.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Caste System</span><span class="mls" data-desc="Social structures.">6-8.WH.2.PC.D</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">China Shang</span><span class="mls" data-desc="Ancient China Geo.">6-8.WH.2.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">China Zhou</span><span class="mls" data-desc="Zhou Dynasty.">6-8.WH.2.CC.C</span></div></td>
-                        <td class="cell-break">🍂 Break</td>
-                    </tr>
-                    <tr>
-                        <td class="col-subject text-us">US History</td>
-                        <td><div class="topic-content"><span class="topic-name">Revolution</span><a href="ccush_07_revolution.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/HlUiSBXQHCw" class="btn btn-vid">Video</a><span class="mls" data-desc="Events of Revolution.">6-8.AH.2.CC.C</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Constitution</span><a href="ccush_08_constitution.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/bO7FQsCcbD8" class="btn btn-vid">Video</a><span class="mls" data-desc="US Constitution.">6-8.AH.2.GS.D</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Parties</span><a href="ccush_09_political_parties.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/_KnPB37YB7I" class="btn btn-vid">Video</a><span class="mls" data-desc="Early parties.">6-8.AH.3.CC.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Jefferson</span><a href="ccush_10_jefferson.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/_3Ox6vGteek" class="btn btn-vid">Video</a><span class="mls" data-desc="Jefferson presidency.">6-8.AH.3.GS.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">War of 1812</span><a href="ccush_11_war_of_1812.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/qMXqg2PKJZU" class="btn btn-vid">Video</a><span class="mls" data-desc="Causes of 1812.">6-8.AH.3.CC.C</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Market Rev</span><a href="ccush_12_market_revolution.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/RNftCCwAol0" class="btn btn-vid">Video</a><span class="mls" data-desc="Economic changes.">6-8.AH.3.EC.A</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Slavery</span><a href="ccush_13_slavery.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Ajn9g5Gsv98" class="btn btn-vid">Video</a><span class="mls" data-desc="Institution of Slavery.">6-8.AH.3.PC.B</span></div></td>
-                        <td class="cell-break">🍂 Break</td>
-                    </tr>
-                    <tr>
-                        <td class="col-subject text-gov">Government</td>
-                        <td><div class="topic-content"><span class="topic-name">Committees</span><a href="ccgov_07_congress_committees.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/evLrZw4VKg" class="btn btn-vid">Video</a><span class="mls" data-desc="Role of committees.">9-12.GV.3.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Leadership</span><a href="ccgov_08_congress_leadership.pdf" target="_blank" class="btn btn-pdf">PDF</a><a href="https://youtu.be/L8urcMLgf4s" class="btn btn-vid">Video</a><span class="mls" data-desc="Congressional leadership.">9-12.GV.3.GS.B</span></div></td>
-                        <td><div class="topic-content"><span class="topic-name">Making Laws</span><a href="ccgov_09_bill_becomes_law.pdf" target="_blank" class="bt
+    <!-- ==================== OCTOBER (Teal) ==================== -->
+    <div class="month-block theme-teal">
+        <div class="month-title">October</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">Egypt Old Kingdom</span><span class="mls" data-desc="Ancient Egypt Geography.">6-8.WH.2.GS.B</span></td>
+                    <td><span class="topic">Egypt New Kingdom</span><span class="mls" data-desc="Dynastic cycles.">6-8.WH.2.PC.B</span></td>
+                    <td><span class="topic">Egypt Culture</span><span class="mls" data-desc="Religion and culture.">6-8.WH.2.PC.C</span></td>
+                    <td><span class="topic">India: Harappa</span><span class="mls" data-desc="Indus Valley geography.">6-8.WH.2.GS.B</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Revolution</span><a href="ccush_07_revolution.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/HlUiSBXQHCw" class="btn btn-vid">Video</a><span class="mls" data-desc="Events of Revolution.">6-8.AH.2.CC.C</span></td>
+                    <td><span class="topic">Constitution</span><a href="ccush_08_constitution.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/bO7FQsCcbD8" class="btn btn-vid">Video</a><span class="mls" data-desc="US Constitution.">6-8.AH.2.GS.D</span></td>
+                    <td><span class="topic">Parties</span><a href="ccush_09_political_parties.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/_KnPB37YB7I" class="btn btn-vid">Video</a><span class="mls" data-desc="Early parties.">6-8.AH.3.CC.A</span></td>
+                    <td><span class="topic">Jefferson</span><a href="ccush_10_jefferson.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/_3Ox6vGteek" class="btn btn-vid">Video</a><span class="mls" data-desc="Jefferson presidency.">6-8.AH.3.GS.A</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Committees</span><a href="ccgov_07_congress_committees.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/evLrZw4VKg" class="btn btn-vid">Video</a><span class="mls" data-desc="Congressional committees.">9-12.GV.3.GS.B</span></td>
+                    <td><span class="topic">Leadership</span><a href="ccgov_08_congress_leadership.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/L8urcMLgf4s" class="btn btn-vid">Video</a><span class="mls" data-desc="House/Senate leaders.">9-12.GV.3.GS.B</span></td>
+                    <td><span class="topic">Making Laws</span><a href="ccgov_09_bill_becomes_law.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/66f4-Nkeyz4" class="btn btn-vid">Video</a><span class="mls" data-desc="Bill becomes law.">9-12.GV.3.PC.A</span></td>
+                    <td><span class="topic">Decisions</span><a href="ccgov_10_congress_decisions.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/ZT9ipQdYLlo" class="btn btn-vid">Video</a><span class="mls" data-desc="Decision making.">9-12.GV.2.GS.B</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== NOVEMBER (Blue) ==================== -->
+    <div class="month-block theme-blue">
+        <div class="month-title">November</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">India: Caste</span><span class="mls" data-desc="Social structures.">6-8.WH.2.PC.D</span></td>
+                    <td><span class="topic">China: Shang</span><span class="mls" data-desc="Ancient China Geog.">6-8.WH.2.GS.B</span></td>
+                    <td><span class="topic">China: Zhou</span><span class="mls" data-desc="Dynastic cycle.">6-8.WH.2.CC.C</span></td>
+                    <td class="cell-break">🍂 Thanksgiving Break</td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">War of 1812</span><a href="ccush_11_war_of_1812.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/qMXqg2PKJZU" class="btn btn-vid">Video</a><span class="mls" data-desc="War of 1812 causes.">6-8.AH.3.CC.C</span></td>
+                    <td><span class="topic">Market Rev</span><a href="ccush_12_market_revolution.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/RNftCCwAol0" class="btn btn-vid">Video</a><span class="mls" data-desc="Economic changes.">6-8.AH.3.EC.A</span></td>
+                    <td><span class="topic">Slavery</span><a href="ccush_13_slavery.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Ajn9g5Gsv98" class="btn btn-vid">Video</a><span class="mls" data-desc="Institution of Slavery.">6-8.AH.3.PC.B</span></td>
+                    <td class="cell-break">🍂 Thanksgiving Break</td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Pres. Power</span><a href="ccgov_11_presidential_power.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/5l02sK5LovI" class="btn btn-vid">Video</a><span class="mls" data-desc="Executive power.">9-12.GV.3.GS.C</span></td>
+                    <td><span class="topic">Powers II</span><a href="ccgov_12_pres_power_two.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/fnYb-sb7w1k" class="btn btn-vid">Video</a><span class="mls" data-desc="Informal powers.">9-12.GV.3.GS.C</span></td>
+                    <td><span class="topic">Delegation</span><a href="ccgov_13_congress_delegation.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/WynUSyARh4Q" class="btn btn-vid">Video</a><span class="mls" data-desc="Bureaucracy power.">9-12.GV.3.PC.B</span></td>
+                    <td class="cell-break">🍂 Thanksgiving Break</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== DECEMBER (Teal) ==================== -->
+    <div class="month-block theme-teal">
+        <div class="month-title">December</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">Minoans</span><span class="mls" data-desc="Minoan Civ.">6-8.WH.2.GS.B</span></td>
+                    <td><span class="topic">Mycenaeans</span><span class="mls" data-desc="Mycenaean Civ.">6-8.WH.2.GS.B</span></td>
+                    <td class="cell-break">📝 Exams</td>
+                    <td class="cell-break">❄️ Winter Break</td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Jackson</span><a href="ccush_14_age_of_jackson.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/beN4qE-e5O8" class="btn btn-vid">Video</a><span class="mls" data-desc="Age of Jackson.">6-8.AH.3.CC.E</span></td>
+                    <td><span class="topic">Reforms</span><a href="ccush_15_reform_movements.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/t62fUZJvjOs" class="btn btn-vid">Video</a><span class="mls" data-desc="Antebellum Reform.">6-8.AH.3.PC.E</span></td>
+                    <td class="cell-break">📝 Exams</td>
+                    <td class="cell-break">❄️ Winter Break</td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Presidents</span><a href="ccgov_14_how_presidents_govern.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/5v7-b_Uf2H4" class="btn btn-vid">Video</a><span class="mls" data-desc="Governing.">9-12.GV.3.GS.C</span></td>
+                    <td><span class="topic">Bureaucracy</span><a href="ccgov_15_bureaucracy_basics.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/I8tE048w0ro" class="btn btn-vid">Video</a><span class="mls" data-desc="Role of Bureaucracy.">9-12.GV.3.GS.E</span></td>
+                    <td class="cell-break">📝 Exams</td>
+                    <td class="cell-break">❄️ Winter Break</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== JANUARY (Blue) ==================== -->
+    <div class="month-block theme-blue">
+        <div class="month-title">January</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td class="cell-break">❄️ Winter Break</td>
+                    <td><span class="topic">Greek Polis</span><span class="mls" data-desc="City States.">6-8.WH.2.GS.C</span></td>
+                    <td><span class="topic">Sparta/Athens</span><span class="mls" data-desc="Compare features.">6-8.WH.2.CC.C</span></td>
+                    <td><span class="topic">Greek Wars</span><span class="mls" data-desc="Persian/Peloponnesian.">6-8.WH.2.CC.D</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td class="cell-break">❄️ Winter Break</td>
+                    <td><span class="topic">Women's Mvmt</span><a href="ccush_16_womens_movements.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/fM1czS_VYDI" class="btn btn-vid">Video</a><span class="mls" data-desc="Women's Rights.">6-8.AH.3.GS.B</span></td>
+                    <td><span class="topic">Westward</span><a href="ccush_17_westward_expansion.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Q1654gQkEsm" class="btn btn-vid">Video</a><span class="mls" data-desc="Expansion.">6-8.AH.3.CC.F</span></td>
+                    <td><span class="topic">Election 1860</span><a href="ccush_18_election_1860.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/roNmeOOJCDY" class="btn btn-vid">Video</a><span class="mls" data-desc="Secession.">6-8.AH.4.CC.A</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td class="cell-break">❄️ Winter Break</td>
+                    <td><span class="topic">Agencies</span><a href="ccgov_16_types_of_bureaucracies.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/t3qfM6Q_9K0" class="btn btn-vid">Video</a><span class="mls" data-desc="Types of agencies.">9-12.GV.3.PC.E</span></td>
+                    <td><span class="topic">Oversight</span><a href="ccgov_17_controlling_bureaucracies.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/I8tE048w0ro" class="btn btn-vid">Video</a><span class="mls" data-desc="Checks on power.">9-12.GV.3.CC.D</span></td>
+                    <td><span class="topic">Legal Sys</span><a href="ccgov_18_legal_system_basics.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/mXw-hCQ5TE0" class="btn btn-vid">Video</a><span class="mls" data-desc="Judicial Branch.">9-12.GV.3.GS.D</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== FEBRUARY (Teal) ==================== -->
+    <div class="month-block theme-teal">
+        <div class="month-title">February</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">Rome Republic</span><span class="mls" data-desc="Roman Geo.">6-8.WH.2.GS.C</span></td>
+                    <td><span class="topic">Rome Empire</span><span class="mls" data-desc="Empire shift.">6-8.WH.2.PC.B</span></td>
+                    <td><span class="topic">Christianity</span><span class="mls" data-desc="Rise of Christianity.">6-8.WH.2.PC.C</span></td>
+                    <td><span class="topic">Rome Fall</span><span class="mls" data-desc="Fall of Rome.">6-8.WH.2.CC.D</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Gilded Age</span><a href="ccush_26_gilded_age.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Spgdy3H_ense" class="btn btn-vid">Video</a><span class="mls" data-desc="Growth & Industry.">9-12.AH.4.EC.C</span></td>
+                    <td><span class="topic">Progressive</span><a href="ccush_27_progressive_era.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/i0Q4zPR4G7M" class="btn btn-vid">Video</a><span class="mls" data-desc="Progressive Era.">9-12.AH.4.GS.C</span></td>
+                    <td><span class="topic">Imperialism</span><a href="ccush_28_imperialism.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/QfsfoFqsFk4" class="btn btn-vid">Video</a><span class="mls" data-desc="US Empire.">9-12.AH.4.CC.D</span></td>
+                    <td><span class="topic">WWI</span><a href="ccush_30_wwi.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/y59wErqg4Xg" class="btn btn-vid">Video</a><span class="mls" data-desc="US in WWI.">9-12.AH.4.CC.E</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Courts</span><a href="ccgov_19_structure_court_system.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/IGsj6U2t108" class="btn btn-vid">Video</a><span class="mls" data-desc="Court Structure.">9-12.GV.3.GS.D</span></td>
+                    <td><span class="topic">SCOTUS</span><a href="ccgov_20_supreme_court_pro.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/7sUAeDk0p2g" class="btn btn-vid">Video</a><span class="mls" data-desc="Supreme Court.">9-12.GV.3.PC.C</span></td>
+                    <td><span class="topic">Review</span><a href="ccgov_21_judicial_review.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/mWYFwl93uCM" class="btn btn-vid">Video</a><span class="mls" data-desc="Judicial Review.">9-12.GV.3.CC.C</span></td>
+                    <td><span class="topic">Decisions</span><a href="ccgov_22_judicial_decisions.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/hsx4Z7S_F8" class="btn btn-vid">Video</a><span class="mls" data-desc="Landmark Cases.">9-12.GV.3.CC.D</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== MARCH (Blue) ==================== -->
+    <div class="month-block theme-blue">
+        <div class="month-title">March</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">Feudalism</span><span class="mls" data-desc="European Feudalism.">6-8.WH.3.GS.A</span></td>
+                    <td><span class="topic">Crusades</span><span class="mls" data-desc="Holy Wars.">6-8.WH.3.CC.A</span></td>
+                    <td><span class="topic">Renaissance</span><span class="mls" data-desc="Rebirth of Art.">6-8.WH.3.PC.B</span></td>
+                    <td><span class="topic">Reformation</span><span class="mls" data-desc="Church Split.">6-8.WH.3.PC.C</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Homefront</span><span class="mls" data-desc="WWI Homefront.">9-12.AH.4.GS.D</span></td>
+                    <td><span class="topic">Suffrage</span><a href="ccush_31_womens_suffrage.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/HGEMscZE5dY" class="btn btn-vid">Video</a><span class="mls" data-desc="Women's Vote.">9-12.AH.4.PC.E</span></td>
+                    <td><span class="topic">Roaring 20s</span><a href="ccush_32_roaring_20s.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/VfOR1XCMf7A" class="btn btn-vid">Video</a><span class="mls" data-desc="1920s Culture.">9-12.AH.5.CC.A</span></td>
+                    <td class="cell-break">🌱 Spring Break</td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Rights</span><a href="ccgov_23_civil_rights_liberties.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/kbwsF-A2sTg" class="btn btn-vid">Video</a><span class="mls" data-desc="Civil Liberties.">9-12.GV.5.PC.A</span></td>
+                    <td><span class="topic">Religion</span><a href="ccgov_24_freedom_of_religion.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Y8dI1GTWCk4" class="btn btn-vid">Video</a><span class="mls" data-desc="Establishment Clause.">9-12.GV.5.GS.B</span></td>
+                    <td><span class="topic">Speech</span><a href="ccgov_25_freedom_of_speech.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/ZleqRW7R9GE" class="btn btn-vid">Video</a><span class="mls" data-desc="Free Speech.">9-12.GV.5.GS.B</span></td>
+                    <td class="cell-break">🌱 Spring Break</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== APRIL (Teal) ==================== -->
+    <div class="month-block theme-teal">
+        <div class="month-title">April</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">Civil War</span><span class="mls" data-desc="US Civil War Context.">9-12.AH.4.CC.A</span></td>
+                    <td><span class="topic">WWI Leadup</span><span class="mls" data-desc="Causes of WWI.">9-12.WH.4.CC.C</span></td>
+                    <td><span class="topic">Trenches</span><span class="mls" data-desc="Modern Warfare.">9-12.WH.4.GS.C</span></td>
+                    <td><span class="topic">Versailles</span><span class="mls" data-desc="Peace Treaty.">9-12.WH.4.PC.D</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Roaring 20s</span><a href="ccush_32_roaring_20s.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/VfOR1XCMf7A" class="btn btn-vid">Video</a><span class="mls" data-desc="1920s Culture.">9-12.AH.5.CC.A</span></td>
+                    <td><span class="topic">Depression</span><a href="ccush_33_great_depression.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/GCQfMWAikyU" class="btn btn-vid">Video</a><span class="mls" data-desc="Great Depression.">9-12.AH.5.EC.B</span></td>
+                    <td><span class="topic">WWII Pt 1</span><a href="ccush_35_wwii_part1.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Objoad6rG6U" class="btn btn-vid">Video</a><span class="mls" data-desc="US Entry.">9-12.AH.5.CC.C</span></td>
+                    <td><span class="topic">WWII Pt 2</span><a href="ccush_36_wwii_part2.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/H_2FSgRyZQc" class="btn btn-vid">Video</a><span class="mls" data-desc="War in Pacific.">9-12.AH.5.GS.C</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Press</span><a href="ccgov_26_freedom_press.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/hK5td7977QA" class="btn btn-vid">Video</a><span class="mls" data-desc="Free Press.">9-12.GV.5.PC.B</span></td>
+                    <td><span class="topic">Search</span><a href="ccgov_27_search_seizure.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/_4O1OlGyTuU" class="btn btn-vid">Video</a><span class="mls" data-desc="4th Amendment.">9-12.GV.5.GS.C</span></td>
+                    <td><span class="topic">Due Process</span><a href="ccgov_28_due_process.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/U0kXF3a8sDA" class="btn btn-vid">Video</a><span class="mls" data-desc="Fair trial.">9-12.GV.5.GS.C</span></td>
+                    <td><span class="topic">Equal Prot</span><a href="ccgov_29_equal_protection.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/qAgKP--3eCk" class="btn btn-vid">Video</a><span class="mls" data-desc="14th Amendment.">9-12.GV.5.CC.D</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==================== MAY (Blue) ==================== -->
+    <div class="month-block theme-blue">
+        <div class="month-title">May</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Week 1</th>
+                    <th>Week 2</th>
+                    <th>Week 3</th>
+                    <th>Week 4</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>World History</td>
+                    <td><span class="topic">WWII Leadup</span><span class="mls" data-desc="Rise of Dictators.">9-12.WH.5.CC.A</span></td>
+                    <td><span class="topic">D-Day/Holo</span><span class="mls" data-desc="Europe Theater.">9-12.WH.5.GS.B</span></td>
+                    <td><span class="topic">Pearl Harbor</span><span class="mls" data-desc="Pacific Theater.">9-12.WH.5.PC.C</span></td>
+                    <td><span class="topic">Post-War</span><span class="mls" data-desc="United Nations.">9-12.WH.5.CC.D</span></td>
+                </tr>
+                <tr>
+                    <td>US History</td>
+                    <td><span class="topic">Cold War</span><a href="ccush_37_the_cold_war.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/9C72ISMF_D0" class="btn btn-vid">Video</a><span class="mls" data-desc="US vs USSR.">9-12.AH.5.CC.D</span></td>
+                    <td><span class="topic">CW Asia</span><a href="ccush_38_the_cold_war_in_asia.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/Y2IcmLkuhG0" class="btn btn-vid">Video</a><span class="mls" data-desc="Korea/Vietnam.">9-12.AH.6.PC.A</span></td>
+                    <td><span class="topic">Civil Rights</span><a href="ccush_39_civil_rights_and_the__1950s.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/S64zRnnn4Po" class="btn btn-vid">Video</a><span class="mls" data-desc="Modern CRM.">9-12.AH.6.PC.C</span></td>
+                    <td><span class="topic">The 60s</span><a href="ccush_40_the_1960s_in_america.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/lkXFb1sMa38" class="btn btn-vid">Video</a><span class="mls" data-desc="Social Change.">9-12.AH.6.CC.D</span></td>
+                </tr>
+                <tr>
+                    <td>Government</td>
+                    <td><span class="topic">Sex Discrim</span><a href="ccgov_30_sex_discrimination.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/1pyd4H887Ks" class="btn btn-vid">Video</a><span class="mls" data-desc="Gender Laws.">9-12.GV.5.PC.E</span></td>
+                    <td><span class="topic">Discrim</span><a href="ccgov_31_discrimination.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/7lF702d7KQM" class="btn btn-vid">Video</a><span class="mls" data-desc="Civil Rights Acts.">9-12.GV.5.PC.E</span></td>
+                    <td><span class="topic">Affirm Act</span><a href="ccgov_32_affirm_action.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/gJgRRHgSJ08" class="btn btn-vid">Video</a><span class="mls" data-desc="Affirmative Action.">9-12.GV.5.CC.E</span></td>
+                    <td><span class="topic">Public Op</span><a href="ccgov_33_public_opinion.pdf" class="btn btn-pdf">PDF</a><a href="https://youtu.be/LEkiRP8TfBU" class="btn btn-vid">Video</a><span class="mls" data-desc="Polling data.">9-12.GV.2.PC.B</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Footer Apps -->
+    <div class="app-grid">
+        <a href="#" class="app-card" onclick="alert('Resources are located in the /government folder of the repo.')">
+            <i class="fas fa-landmark app-icon"></i>
+            <h3 class="font-bold">Government Resources</h3>
+        </a>
+        <a href="#" class="app-card" onclick="alert('Resources are located in the /world-history folder of the repo.')">
+            <i class="fas fa-globe-americas app-icon"></i>
+            <h3 class="font-bold">World History Resources</h3>
+        </a>
+        <a href="#" class="app-card" onclick="alert('Resources are located in the /us-history folder of the repo.')">
+            <i class="fas fa-flag-usa app-icon"></i>
+            <h3 class="font-bold">American History Resources</h3>
+        </a>
+        <a href="#" class="app-card" onclick="alert('Check the electives folder.')">
+            <i class="fas fa-graduation-cap app-icon"></i>
+            <h3 class="font-bold">Other Electives</h3>
+        </a>
+    </div>
+
+</body>
+</html>
+
+
